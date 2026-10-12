@@ -7,18 +7,33 @@ public class CameraMovement : MonoBehaviour
 
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
-    public float rearViewSpeed = 900f;
     private float returnSpeed = 270f;
+
+    // taking a transform variables of center and rearview gameobject
     public Transform target;
-    public bool isResetCenter = false;
     public Transform center;
+
+    //checks if the user is able to reset center
+    public bool isResetCenter = false;
+
+    // making variables for moving up and down, left and right that can later be changed via input.
     public float verticalAngle;
     public float horizontalAngle;
+
+    // checks if player has looked in the rear
     public bool hasSeenRear = false;
+
+    // checks if player is going to go back to center
     public bool goingBackToCenter;
+
+    // checks if player is using the input to looking at rear
     public bool rearInput;
+
+    // checks if its looking left or right
     public bool isLookingRight;
     public bool isLookingLeft;
+
+    //checks if it can reset in the middle
     public bool canReset;
    
 
@@ -26,15 +41,12 @@ public class CameraMovement : MonoBehaviour
 
 
 
-    void Start()
-    {
-        
-    }
+    
 
     void Update()
     {
 
-
+        // checks if you are pressing true and if the player is allowed to reset to the middle
         if (Input.GetKeyDown(KeyCode.W) && canReset == true)
         {
             isResetCenter = true;
@@ -42,7 +54,7 @@ public class CameraMovement : MonoBehaviour
 
 
  
-
+            // moves left or right if the vertical angle is less than 0.1 (basically in the middle)
             if (Mathf.Abs(verticalAngle) < 0.1f)
             {
 
@@ -58,7 +70,7 @@ public class CameraMovement : MonoBehaviour
                
             }
 
-
+            // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
             if (Mathf.Abs(horizontalAngle) <0.1f)
             {
                 if (Input.GetKeyDown(KeyCode.S) && rearInput == false)
@@ -74,11 +86,13 @@ public class CameraMovement : MonoBehaviour
             }
 
 
-         
+         // runs if player is looking left 
          if(isLookingLeft == true)
          {
+            // moves the horizontal angle from its current angle to -60 with returnSpeed so it moves smoothly
             horizontalAngle = Mathf.MoveTowards(horizontalAngle, -60, returnSpeed * Time.deltaTime);
 
+            // if horizontalAngle has met its desired destination than it doesn't need to rotate anymore
             if (horizontalAngle == -60f)
             {
                 isLookingLeft = false;
@@ -88,13 +102,17 @@ public class CameraMovement : MonoBehaviour
             {
                 canReset = false;
             }
-
+            // takes the angle and changes it into euler and then using unity rotation system by rotating it with the desired eulerangle which is horizontalAngle.
             transform.localRotation = Quaternion.Euler(0f, horizontalAngle,0f);
          }
 
+         // runs if player is looking right 
         if(isLookingRight == true)
         {
+            // moves the horizontal angle from its current angle to 60 with returnSpeed so it moves smoothly
             horizontalAngle = Mathf.MoveTowards(horizontalAngle, 60, returnSpeed * Time.deltaTime);
+
+            // if horizontalAngle has met its desired desintation than it doesn't need to rotate anymore
             if (horizontalAngle == 60f)
             {
                 isLookingRight = false;
@@ -153,41 +171,19 @@ public class CameraMovement : MonoBehaviour
     }
 
 
-         
-
-      
-
-      
 
 
 
-        // resets the position by first seeing the current rotation and moving towards the initial rotation which is 0 with some speed value.
-        void ResetCameraFromSides()
-        {
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 0f, returnSpeed * Time.deltaTime);
-       
-        }
-
-        void LookRear()
-        {
-                
-                Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, returnSpeed * Time.deltaTime);
-            
-        }
-
-        void RearToCenter()
-        {
-           
-                Quaternion resetRotation = Quaternion.LookRotation(center.position - transform.position);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, resetRotation, returnSpeed * Time.deltaTime);
-            
-        }
-
-       
 
 
 
-    
+
+
+    // resets the position by first seeing the current rotation and moving towards the initial rotation which is 0 with some speed value.
+    void ResetCameraFromSides()
+    {
+        horizontalAngle = Mathf.MoveTowards(horizontalAngle, 0f, returnSpeed * Time.deltaTime);
+
+    }
 
 }
