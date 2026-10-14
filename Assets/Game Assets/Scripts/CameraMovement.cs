@@ -58,15 +58,23 @@ public class CameraMovement : MonoBehaviour
             if (Mathf.Abs(verticalAngle) < 0.1f)
             {
 
-                if (Input.GetKey(KeyCode.A))
+                if(isLookingRight == false)
                 {
-                  isLookingLeft = true;
+                 if (Input.GetKey(KeyCode.A))
+                 {
+                    isLookingLeft = true;
+                 }
                 }
+                
 
-                if(Input.GetKey(KeyCode.D))
+                if(isLookingLeft == false)
                 {
-                 isLookingRight = true;
+                if (Input.GetKey(KeyCode.D))
+                {
+                    isLookingRight = true;
                 }
+            }
+                
                
             }
 
