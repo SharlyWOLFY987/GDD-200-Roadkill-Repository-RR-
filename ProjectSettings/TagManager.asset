@@ -42,19 +42,10 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Road
-    uniqueID: 3204024741
-    locked: 0
-  - name: Snow
-    uniqueID: 3011301951
-    locked: 0
-  - name: Trees
-    uniqueID: 1167708741
-    locked: 0
-  - name: Shed
-    uniqueID: 362996899
+    uniqueID: 670818751
     locked: 0
   - name: Car
-    uniqueID: 2077975443
+    uniqueID: 3235606537
     locked: 0
   m_RenderingLayers:
   - Default
