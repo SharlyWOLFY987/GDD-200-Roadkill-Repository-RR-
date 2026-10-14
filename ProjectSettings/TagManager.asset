@@ -50,6 +50,9 @@ TagManager:
   - name: Road
     uniqueID: 3831605805
     locked: 0
+  - name: Car Window
+    uniqueID: 3599751497
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
