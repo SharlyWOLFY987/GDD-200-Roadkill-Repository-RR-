@@ -10,8 +10,8 @@ public class DemoCameraMovement : MonoBehaviour
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
-    private float transformSpeed = 7f;
-    private float laptopRotationSpeed = 50f;
+    private float transformSpeed = 15f;
+    private float laptopRotationSpeed = 150f;
     // taking a transform variables of center and rearview gameobject
 
 
@@ -172,7 +172,7 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingLeft == true)
         {
             // moves the horizontal angle from its current angle to -60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -60, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -60f, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired destination than it doesn't need to rotate anymore
             if (horizontalAngle == -60f)
@@ -196,7 +196,7 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingRight == true)
         {
             // moves the horizontal angle from its current angle to 60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 60, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 60f, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired desintation than it doesn't need to rotate anymore
             if (horizontalAngle == 60f)
@@ -257,6 +257,7 @@ public class DemoCameraMovement : MonoBehaviour
             horizontalAngle = Mathf.MoveTowards(horizontalAngle, 20f, laptopRotationSpeed * Time.deltaTime);
             if (transform.position == Target.position && horizontalAngle == 20f)
             {
+                canReset = false;
                 isLookingLeft = false;
                 isLookingRight = false;
                 isLookingAtLaptop = false;
@@ -271,6 +272,7 @@ public class DemoCameraMovement : MonoBehaviour
 
             if (transform.position == Original.position)
             {
+                canReset = true;
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
