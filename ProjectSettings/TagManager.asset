@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
+=======
+  - name: SNOW
+    uniqueID: 2254588563
+    locked: 0
+>>>>>>> parent of c3f43aa (Waterfall Scene Update & Rearraning of Assets)
   - name: Road
     uniqueID: 670818751
     locked: 0
@@ -50,9 +56,12 @@ TagManager:
   - name: tree
     uniqueID: 2454962787
     locked: 0
+<<<<<<< HEAD
   - name: evidence
     uniqueID: 850589989
     locked: 0
+=======
+>>>>>>> parent of c3f43aa (Waterfall Scene Update & Rearraning of Assets)
   - name: Car
     uniqueID: 3235606537
     locked: 0
