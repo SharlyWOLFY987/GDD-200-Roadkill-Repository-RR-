@@ -4,14 +4,14 @@ using UnityEngine;
 public class DemoCameraMovement : MonoBehaviour
 {
 
-
-    public GameObject rearCamera;
+    public GameObject RearCamera;
 
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
     private float transformSpeed = 15f;
     private float laptopRotationSpeed = 150f;
+    private float rearRotation = 20f;
     // taking a transform variables of center and rearview gameobject
 
 
@@ -218,12 +218,12 @@ public class DemoCameraMovement : MonoBehaviour
         // checks if the player has clicked s and if it did it rotates the camera to the rear
         if (hasSeenRear == true)
         {
-            verticalAngle = Mathf.MoveTowards(verticalAngle, -12f, rotationSpeed * Time.deltaTime);
+            verticalAngle = Mathf.MoveTowards(verticalAngle, -12f, rearRotation * Time.deltaTime);
             transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
 
             if (verticalAngle == -12f)
             {
-                rearCamera.SetActive(true);
+                RearCamera.SetActive(true);
                 hasSeenRear = false;
                 rearInput = true;
             }
@@ -235,11 +235,11 @@ public class DemoCameraMovement : MonoBehaviour
         {
             if (goingBackToCenter == true)
             {
-                rearCamera.SetActive(false);
-                verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rotationSpeed * Time.deltaTime);
+                RearCamera.SetActive(false);
+                verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rearRotation * Time.deltaTime);
                 transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
                 if (verticalAngle == 0f)
-                {
+                { 
                     goingBackToCenter = false;
                     rearInput = false;
                 }
