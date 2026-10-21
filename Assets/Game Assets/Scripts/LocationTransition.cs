@@ -12,6 +12,11 @@ public class LocationTransition : MonoBehaviour
     [Header("Destination")]
     [SerializeField] private Transform targetLocation;
 
+    [Header("What to Know about This Script")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string tldr = "This script loads a fade transition and moves the player to the next area.";
+
     private bool isFading = false;
     private Transform player;
 
