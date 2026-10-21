@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class DemoCameraMovement : MonoBehaviour
 {
+    public GameObject rearCamera;
+    public GameObject freeLookCamera;
 
-    public GameObject RearCamera;
 
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
-    private float transformSpeed = 15f;
+    private float transformSpeed = 5f;
     private float laptopRotationSpeed = 150f;
-    private float rearRotation = 20f;
-    // taking a transform variables of center and rearview gameobject
-
 
     //checks if the user is able to reset center
     public bool isResetCenter = false;
@@ -47,9 +45,11 @@ public class DemoCameraMovement : MonoBehaviour
 
 
     void Start()
-
     {
+
         isTurning = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -126,6 +126,7 @@ public class DemoCameraMovement : MonoBehaviour
         LookingRightFunction();
         LaptopFunction();
         RearCameraFunction();
+        FreeLook();
     }
 
 
@@ -172,10 +173,10 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingLeft == true)
         {
             // moves the horizontal angle from its current angle to -60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -60f, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -90f, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired destination than it doesn't need to rotate anymore
-            if (horizontalAngle == -60f)
+            if (horizontalAngle == -90f)
             {
                 isLookingLeft = false;
                 canReset = true;
@@ -196,10 +197,10 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingRight == true)
         {
             // moves the horizontal angle from its current angle to 60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 60f, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 90f, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired desintation than it doesn't need to rotate anymore
-            if (horizontalAngle == 60f)
+            if (horizontalAngle == 90f)
             {
                 isLookingRight = false;
                 canReset = true;
@@ -218,12 +219,12 @@ public class DemoCameraMovement : MonoBehaviour
         // checks if the player has clicked s and if it did it rotates the camera to the rear
         if (hasSeenRear == true)
         {
-            verticalAngle = Mathf.MoveTowards(verticalAngle, -12f, rearRotation * Time.deltaTime);
+            verticalAngle = Mathf.MoveTowards(verticalAngle, -18f, rotationSpeed * Time.deltaTime);
             transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
 
-            if (verticalAngle == -12f)
+            if (verticalAngle == -18f)
             {
-                RearCamera.SetActive(true);
+                rearCamera.SetActive(true);
                 hasSeenRear = false;
                 rearInput = true;
             }
@@ -235,11 +236,12 @@ public class DemoCameraMovement : MonoBehaviour
         {
             if (goingBackToCenter == true)
             {
-                RearCamera.SetActive(false);
-                verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rearRotation * Time.deltaTime);
+                rearCamera.SetActive(false);
+                verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rotationSpeed * Time.deltaTime);
                 transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
                 if (verticalAngle == 0f)
-                { 
+                {
+
                     goingBackToCenter = false;
                     rearInput = false;
                 }
@@ -254,10 +256,9 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingAtLaptop == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, Target.position, transformSpeed * Time.deltaTime);
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 20f, laptopRotationSpeed * Time.deltaTime);
-            if (transform.position == Target.position && horizontalAngle == 20f)
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 30f, laptopRotationSpeed * Time.deltaTime);
+            if (transform.position == Target.position && horizontalAngle == 30f)
             {
-                canReset = false;
                 isLookingLeft = false;
                 isLookingRight = false;
                 isLookingAtLaptop = false;
@@ -272,16 +273,30 @@ public class DemoCameraMovement : MonoBehaviour
 
             if (transform.position == Original.position)
             {
-                canReset = true;
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
 
             }
-
-
         }
     }
+
+
+    void FreeLook()
+    {
+        if(horizontalAngle == -90f || horizontalAngle == 90f)
+        {
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                freeLookCamera.SetActive(true);
+            }
+        }
+    }
+
+
+
+
+   
 
 
 

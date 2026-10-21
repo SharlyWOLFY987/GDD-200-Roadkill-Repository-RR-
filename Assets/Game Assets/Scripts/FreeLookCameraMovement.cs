@@ -25,15 +25,13 @@ public class FreeLookCameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cameraScript.horizontalAngle == -60f)
+        if(cameraScript.horizontalAngle == -90f)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, zoomTransitionSpeed * Time.deltaTime);
                 horizontalRotation += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
                 verticalRotation += Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-                verticalRotation = Mathf.Clamp(horizontalRotation, -45f, 45f);
-                verticalRotation = Mathf.Clamp(horizontalRotation, -30f, 30f);
                 transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
             }
             else
@@ -49,15 +47,12 @@ public class FreeLookCameraMovement : MonoBehaviour
             }
         }
 
-        if (cameraScript.horizontalAngle == 60f)
+        if (cameraScript.horizontalAngle == 90f)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, zoomTransitionSpeed * Time.deltaTime);
                 horizontalRotation += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-                verticalRotation += Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-                verticalRotation = Mathf.Clamp(verticalRotation, -45f, 45f);
-                horizontalRotation = Mathf.Clamp(horizontalRotation, -30f, 30f);
                 transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
             }
             else
