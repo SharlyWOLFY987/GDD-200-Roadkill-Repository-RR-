@@ -83,15 +83,17 @@ public class LocationTransition : MonoBehaviour
         isFading = true;
 
         // Move car backwards
-        yield return StartCoroutine(
-        MoveCar(
-            -car.forward,
-            backwardsDistance,
-            backwardsSpeed
-        )
-    );
+        StartCoroutine(
+    MoveCar(
+        -car.forward,
+        backwardsDistance,
+        backwardsSpeed
+    )
+);
 
         yield return new WaitForSeconds(backwardsTransitionDelay);
+
+        yield return StartCoroutine(Fade(1f));
 
         // Fade to black
         yield return StartCoroutine(Fade(1f));
