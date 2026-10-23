@@ -23,6 +23,8 @@ public class LocationTransition : MonoBehaviour
     private void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log($"LocationTransition running on {gameObject.name}");
+        Debug.Log($"Target = {targetLocation}");
 
         if (playerObj != null)
         {
@@ -38,13 +40,32 @@ public class LocationTransition : MonoBehaviour
     }
     //Temporarily set as the "K" key. Will be changed when map is created.
     private void Update()
+     {
+         if (Input.GetKeyDown(KeyCode.K) && !isFading)
+         {
+             StartCoroutine(FadeAndTransition());
+         }
+     }
+    /*private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && !isFading)
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            StartCoroutine(FadeAndTransition());
+            Debug.Log($"K pressed on {gameObject.name}");
+            Vector3 before = player.position;
+
+            if (targetLocation != null)
+            {
+                Debug.Log($"Teleporting to {targetLocation.position}");
+                player.position = targetLocation.position;
+            }
+
+            player.position = targetLocation.position;
+
+            Debug.Log("Before: " + before);
+            Debug.Log("After: " + player.position);
         }
     }
-
+    */
     private IEnumerator FadeAndTransition()
     {
         isFading = true;
@@ -60,7 +81,6 @@ public class LocationTransition : MonoBehaviour
         {
             player.position = targetLocation.position;
         }
-
         // Fade back in
         yield return StartCoroutine(Fade(0f));
 
