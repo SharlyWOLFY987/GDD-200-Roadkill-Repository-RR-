@@ -8,10 +8,9 @@ public class CameraMovement : MonoBehaviour
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
-
+    private float transformSpeed = 30f;
     // taking a transform variables of center and rearview gameobject
-    public Transform target;
-    public Transform center;
+
 
     //checks if the user is able to reset center
     public bool isResetCenter = false;
@@ -32,10 +31,15 @@ public class CameraMovement : MonoBehaviour
     // checks if its looking left or right
     public bool isLookingRight;
     public bool isLookingLeft;
+    public bool isLookingAtLaptop;
+    public bool isNotLookingAtLaptop;
+    public bool laptopFunction;
 
     //checks if it can reset in the middle
     public bool canReset;
-   
+
+    public Transform Target;
+    public Transform Original;
 
 
 
@@ -53,37 +57,63 @@ public class CameraMovement : MonoBehaviour
         }
 
 
- 
-            // moves left or right if the vertical angle is less than 0.1 (basically in the middle)
-            if (Mathf.Abs(verticalAngle) < 0.1f)
-            {
 
+        // moves left or right if the vertical angle is less than 0.1 (basically in the middle)
+        if (Mathf.Abs(verticalAngle) < 0.1f)
+        {
+
+            if (isLookingRight == false)
+            {
                 if (Input.GetKey(KeyCode.A))
                 {
-                  isLookingLeft = true;
+                    isLookingLeft = true;
                 }
-
-                if(Input.GetKey(KeyCode.D))
-                {
-                 isLookingRight = true;
-                }
-               
             }
 
-            // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
-            if (Mathf.Abs(horizontalAngle) <0.1f)
+
+            if (isLookingLeft == false)
             {
-                if (Input.GetKeyDown(KeyCode.S) && rearInput == false)
+                if (Input.GetKey(KeyCode.D))
                 {
-                    hasSeenRear = true;
-                }
-                if(Input.GetKeyDown(KeyCode.S) && rearInput == true)
-                {
-                    goingBackToCenter = true;
+                    isLookingRight = true;
                 }
 
-            
             }
+
+           if(isLookingRight == false && isLookingLeft == false)
+            {
+                if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == false)
+                {
+                    isLookingAtLaptop = true;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == true)
+                {
+                    isNotLookingAtLaptop = true;
+                }
+            }
+           
+        }
+
+
+
+
+
+
+        // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
+        if (Mathf.Abs(horizontalAngle) < 0.1f)
+        {
+            if (Input.GetKeyDown(KeyCode.S) && rearInput == false)
+            {
+                hasSeenRear = true;
+            }
+            if (Input.GetKeyDown(KeyCode.S) && rearInput == true)
+            {
+                goingBackToCenter = true;
+            }
+
+        }
+
 
 
          // runs if player is looking left 
@@ -156,27 +186,51 @@ public class CameraMovement : MonoBehaviour
         }
 
         //checks if the player has clicked s while its looking at rear and if it is then it rotates back to the center.
-        if(goingBackToCenter == true)
+        if(isLookingLeft == false && isLookingRight == false)
         {
-            verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rotationSpeed * Time.deltaTime);
-            transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
-            if(verticalAngle == 0f)
+            if (goingBackToCenter == true)
             {
-                goingBackToCenter = false;
-                rearInput = false;
+                verticalAngle = Mathf.MoveTowards(verticalAngle, 0f, rotationSpeed * Time.deltaTime);
+                transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
+                if (verticalAngle == 0f)
+                {
+                    goingBackToCenter = false;
+                    rearInput = false;
+                }
+
             }
-           
+        }
+        
+
+
+        if(isLookingAtLaptop == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, Target.position, transformSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 30f, returnSpeed * Time.deltaTime);
+            if(horizontalAngle == 30f)
+            {
+                isLookingAtLaptop = false;
+                laptopFunction = true;
+            }
+            transform.localRotation = Quaternion.Euler(0f,horizontalAngle,0f);
+        }
+
+        if(isNotLookingAtLaptop == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, Original.position, transformSpeed * Time.deltaTime);
+            
+            if(transform.position ==  Original.position)
+            {
+                isNotLookingAtLaptop = false;
+                laptopFunction = false;
+            }
+                
+            
         }
 
     }
 
-
-
-
-
-
-
-
+      
 
 
     // resets the position by first seeing the current rotation and moving towards the initial rotation which is 0 with some speed value.
