@@ -1367,6 +1367,13 @@ MonoBehaviour:
   waitTime: 2
   targetLocation: {fileID: 36300579}
   tldr: This script loads a fade transition and moves the player to the next area.
+  car: {fileID: 229095807}
+  backwardsDistance: 2
+  backwardsSpeed: 3
+  backwardsTransitionDelay: 0.5
+  forwardsDistance: 2
+  forwardsSpeed: 3
+  forwardsTransitionDelay: 0.5
 --- !u!4 &56359369
 Transform:
   m_ObjectHideFlags: 0
