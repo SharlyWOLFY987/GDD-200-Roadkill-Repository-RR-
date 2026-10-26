@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6090752631349299640}
   - component: {fileID: 1189452011635782475}
   - component: {fileID: 1698677169149376161}
-  m_Layer: 0
-  m_Name: DeerManBloodyAntler
+  m_Layer: 6
+  m_Name: DeerMan_BloodyAntler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
