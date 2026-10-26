@@ -28,7 +28,7 @@ public class DemoCameraMovement : MonoBehaviour
     // making variables for moving up and down, left and right that can later be changed via input.
     public float verticalAngle;
     public float horizontalAngle;
-    public float clampAngle = 15f;
+    public float clampAngle;
     public float LookingHorizontalAngle = 90f;
 
     // checks if player has looked in the rear
@@ -356,8 +356,8 @@ public class DemoCameraMovement : MonoBehaviour
             {
                 horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed * Time.deltaTime;
                 verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed * Time.deltaTime;
-                horizontalRotation = Mathf.Clamp(horizontalRotation, -15f, 15f);
-                verticalRotation = Mathf.Clamp(verticalRotation, -15f, 15f);
+                horizontalRotation = Mathf.Clamp(horizontalRotation, -clampAngle, clampAngle);
+                verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
                 freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
             }
            

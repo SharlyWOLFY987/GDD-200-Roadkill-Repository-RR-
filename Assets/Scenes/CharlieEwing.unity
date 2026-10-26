@@ -11053,6 +11053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 283069776}
+  - component: {fileID: 283069777}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -11076,6 +11077,44 @@ Transform:
   - {fileID: 1379324751}
   m_Father: {fileID: 700480614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283069777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283069775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eee56309ac34144cb41b5e36f0c038d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DemoCameraMovement
+  rearCamera: {fileID: 2081673692}
+  freeLookCamera: {fileID: 1379324757}
+  horizontalRotation: 0
+  verticalRotation: 0
+  isZoomingIn: 0
+  isResetCenter: 0
+  verticalAngle: 0
+  horizontalAngle: 0
+  clampAngle: 20
+  LookingHorizontalAngle: 90
+  hasSeenRear: 0
+  goingBackToCenter: 0
+  rearInput: 0
+  isLookingRight: 0
+  isLookingLeft: 0
+  isLookingAtLaptop: 0
+  isNotLookingAtLaptop: 0
+  laptopFunction: 0
+  isTurning: 0
+  canUseCamera: 0
+  zoomInFunction: 0
+  zoomOutFunction: 0
+  getAxis: 0
+  canReset: 0
+  Target: {fileID: 845208053}
+  Original: {fileID: 283069776}
 --- !u!1 &284171326
 GameObject:
   m_ObjectHideFlags: 0
@@ -53791,7 +53830,6 @@ GameObject:
   - component: {fileID: 1379324756}
   - component: {fileID: 1379324755}
   - component: {fileID: 1379324754}
-  - component: {fileID: 1379324753}
   - component: {fileID: 1379324752}
   m_Layer: 0
   m_Name: Main Camera
@@ -53841,34 +53879,6 @@ MonoBehaviour:
   gameManager: {fileID: 2058836112}
   photoGalleryList: []
   collectionTime: 3
---- !u!114 &1379324753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379324750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eee56309ac34144cb41b5e36f0c038d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DemoCameraMovement
-  rearCamera: {fileID: 2081673692}
-  isResetCenter: 0
-  verticalAngle: 0
-  horizontalAngle: 0
-  hasSeenRear: 0
-  goingBackToCenter: 0
-  rearInput: 0
-  isLookingRight: 0
-  isLookingLeft: 0
-  isLookingAtLaptop: 0
-  isNotLookingAtLaptop: 0
-  laptopFunction: 0
-  isTurning: 0
-  canReset: 0
-  Target: {fileID: 845208053}
-  Original: {fileID: 283069776}
 --- !u!114 &1379324754
 MonoBehaviour:
   m_ObjectHideFlags: 0
