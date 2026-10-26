@@ -11998,11 +11998,10 @@ Transform:
   m_GameObject: {fileID: 510843244}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.89487076, y: 3.3600001, z: -50.85422}
+  m_LocalPosition: {x: 0.84, y: 3.3600001, z: -50.85422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1589602382}
+  m_Children: []
   m_Father: {fileID: 1498540353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511013615
@@ -37186,6 +37185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1589602382}
   - {fileID: 510843245}
   - {fileID: 1997254797}
   - {fileID: 69660807}
@@ -37194,6 +37194,7 @@ Transform:
   - {fileID: 665493137}
   - {fileID: 1110119222}
   - {fileID: 1745585036}
+  - {fileID: 1505769565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498998804
@@ -38074,6 +38075,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1502091278}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1505769564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505769565}
+  m_Layer: 0
+  m_Name: LeftTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505769565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505769564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.63, y: 3, z: -50.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1498540353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506073370
 GameObject:
   m_ObjectHideFlags: 0
@@ -40170,8 +40202,8 @@ GameObject:
   - component: {fileID: 1589602387}
   - component: {fileID: 1589602386}
   - component: {fileID: 1589602385}
-  - component: {fileID: 1589602384}
   - component: {fileID: 1589602383}
+  - component: {fileID: 1589602389}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -40188,11 +40220,11 @@ Transform:
   m_GameObject: {fileID: 1589602381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8899994, y: 3.3600001, z: -50.85422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 510843245}
+  m_Father: {fileID: 1498540353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1589602383
 MonoBehaviour:
@@ -40213,34 +40245,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 10000
---- !u!114 &1589602384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589602381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eee56309ac34144cb41b5e36f0c038d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DemoCameraMovement
-  rearCamera: {fileID: 1745585035}
-  isResetCenter: 0
-  verticalAngle: 0
-  horizontalAngle: 0
-  hasSeenRear: 0
-  goingBackToCenter: 0
-  rearInput: 0
-  isLookingRight: 0
-  isLookingLeft: 0
-  isLookingAtLaptop: 0
-  isNotLookingAtLaptop: 0
-  laptopFunction: 0
-  isTurning: 0
-  canReset: 0
-  Target: {fileID: 1170520753}
-  Original: {fileID: 510843245}
 --- !u!114 &1589602385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40361,6 +40365,35 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1589602389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589602381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eee56309ac34144cb41b5e36f0c038d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DemoCameraMovement
+  rearCamera: {fileID: 1745585035}
+  freeLookCamera: {fileID: 0}
+  isResetCenter: 0
+  verticalAngle: 0
+  horizontalAngle: 0
+  hasSeenRear: 0
+  goingBackToCenter: 0
+  rearInput: 0
+  isLookingRight: 0
+  isLookingLeft: 0
+  isLookingAtLaptop: 0
+  isNotLookingAtLaptop: 0
+  laptopFunction: 0
+  isTurning: 0
+  canReset: 0
+  Target: {fileID: 1170520753}
+  Original: {fileID: 510843245}
 --- !u!1 &1594130667
 GameObject:
   m_ObjectHideFlags: 0
