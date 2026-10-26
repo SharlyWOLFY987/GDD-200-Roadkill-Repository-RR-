@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6864455923579882791}
   - component: {fileID: 3962568582375020548}
   - component: {fileID: 5369402049619421685}
-  m_Layer: 0
-  m_Name: DeerManTracks
+  m_Layer: 6
+  m_Name: DeerMan_Tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
