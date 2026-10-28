@@ -5681,7 +5681,7 @@ GameObject:
   - component: {fileID: 338605221}
   - component: {fileID: 338605220}
   m_Layer: 5
-  m_Name: Computer Screen UI
+  m_Name: Computer Screen Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
