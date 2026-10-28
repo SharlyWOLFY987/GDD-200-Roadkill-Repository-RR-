@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; // here for list use
 //using Unity.VisualScripting;
 using UnityEngine;
 //using UnityEngine.UI; //technically not neccesary as of now, but here in case I need to change how the Photos are stored in the Photo Gallery
@@ -49,7 +49,7 @@ public class CameraRecognizeObjects : MonoBehaviour
         if(Physics.Raycast(photoCameraRaycast, out RaycastHit hit, maxDistance * 100, evidenceLayer)){ //if an object on the evidence layer is in line of sight of the camera
             String objectHitName = hit.collider.gameObject.name;
             //Debug.Log(objectHitName + " was detected."); //gets the name of the game object the raycast hits
-            //toggle photo is ready UI element! (the same as the previous one with a couple of element added on)
+            //toggle 'photo is ready' UI element! (the same as the previous one with a couple of element added on)
             if (Input.GetMouseButtonDown(0)) //when left mouse is pressed
             {
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)
