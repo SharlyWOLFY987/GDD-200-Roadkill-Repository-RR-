@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class DemoCameraMovement : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class DemoCameraMovement : MonoBehaviour
     private float zoomSpeed = 100f;
     public float horizontalRotation;
     public float verticalRotation;
-    private float cameraRotationSpeed = 500f;
+    public float cameraRotationSpeed;
     private float zoomOutSpeed = 100f;
     public bool isZoomingIn;
 
@@ -80,7 +80,7 @@ public class DemoCameraMovement : MonoBehaviour
         // moves left or right if the vertical angle is less than 0.1 (basically in the middle)
         if (canUseCamera == false)
         {
-            if (Input.GetKeyDown(KeyCode.W) && canReset == true)
+            if (Keyboard.current.wKey.wasPressedThisFrame && canReset == true)
             {
                 isResetCenter = true;
             }
@@ -91,7 +91,7 @@ public class DemoCameraMovement : MonoBehaviour
                 {
                     if (isLookingRight == false)
                     {
-                        if (Input.GetKey(KeyCode.A))
+                        if (Keyboard.current.aKey.wasPressedThisFrame)
                         {
                             isLookingLeft = true;
                         }
@@ -100,7 +100,7 @@ public class DemoCameraMovement : MonoBehaviour
 
                     if (isLookingLeft == false)
                     {
-                        if (Input.GetKey(KeyCode.D))
+                        if (Keyboard.current.dKey.wasPressedThisFrame)
                         {
                             isLookingRight = true;
                         }
@@ -110,13 +110,13 @@ public class DemoCameraMovement : MonoBehaviour
 
                 if (isLookingRight == false && isLookingLeft == false)
                 {
-                    if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == false)
+                    if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == false)
                     {
                         isTurning = false;
                         isLookingAtLaptop = true;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == true)
+                    if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == true)
                     {
                         isNotLookingAtLaptop = true;
                     }
@@ -129,11 +129,11 @@ public class DemoCameraMovement : MonoBehaviour
             // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
             if (Mathf.Abs(horizontalAngle) < 0.1f)
             {
-                if (Input.GetKeyDown(KeyCode.S) && rearInput == false)
+                if (Keyboard.current.sKey.wasPressedThisFrame && rearInput == false)
                 {
                     hasSeenRear = true;
                 }
-                if (Input.GetKeyDown(KeyCode.S) && rearInput == true)
+                if (Keyboard.current.sKey.wasPressedThisFrame && rearInput == true)
                 {
                     goingBackToCenter = true;
                 }
@@ -308,7 +308,7 @@ public class DemoCameraMovement : MonoBehaviour
         {
             if(isZoomingIn == false)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
                 {
                     canUseCamera = true;
                     zoomInFunction = true;
@@ -317,7 +317,7 @@ public class DemoCameraMovement : MonoBehaviour
             
             if(isZoomingIn == true)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
                 {
                     zoomOutFunction = true;
                 }
@@ -354,8 +354,8 @@ public class DemoCameraMovement : MonoBehaviour
 
             if (getAxis == true)
             {
-                horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed * Time.deltaTime;
-                verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed * Time.deltaTime;
+                horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed;
+                verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed;
                 horizontalRotation = Mathf.Clamp(horizontalRotation, -clampAngle, clampAngle);
                 verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
                 freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
