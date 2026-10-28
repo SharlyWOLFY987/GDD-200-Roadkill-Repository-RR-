@@ -11093,6 +11093,7 @@ MonoBehaviour:
   freeLookCamera: {fileID: 1379324757}
   horizontalRotation: 0
   verticalRotation: 0
+  cameraRotationSpeed: 0
   isZoomingIn: 0
   isResetCenter: 0
   verticalAngle: 0
