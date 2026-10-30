@@ -38163,6 +38163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   blogUI: {fileID: 1189714336}
+  inLaptop: 0
 --- !u!1 &1006921637
 GameObject:
   m_ObjectHideFlags: 0
@@ -63716,14 +63717,14 @@ Transform:
   m_GameObject: {fileID: 1655868818}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.1, y: 6.6, z: -73.12}
+  m_LocalPosition: {x: 1.0948677, y: 2.1599998, z: -46.320004}
   m_LocalScale: {x: 0.16616501, y: 0.16616501, z: 0.16616501}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2036172036}
   - {fileID: 287741145}
   - {fileID: 498371415}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1875961968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656842718
 GameObject:
@@ -73201,6 +73202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1655868819}
   - {fileID: 1635367594}
   - {fileID: 1792999755}
   - {fileID: 486003036}
@@ -84775,7 +84777,6 @@ SceneRoots:
   - {fileID: 438807306}
   - {fileID: 1126617814}
   - {fileID: 1875961968}
-  - {fileID: 1655868819}
   - {fileID: 1291015855}
   - {fileID: 599017855}
   - {fileID: 635237340}
