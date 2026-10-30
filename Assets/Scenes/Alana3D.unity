@@ -38159,7 +38159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1006411601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dce0c4b3996f2d498c65448c429e30f, type: 3}
+  m_Script: {fileID: 11500000, guid: 665a777ecebaf7a4faff0f98dad9c44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   blogUI: {fileID: 1189714336}
@@ -50773,6 +50773,13 @@ MonoBehaviour:
   waitTime: 2
   targetLocation: {fileID: 0}
   tldr: This script loads a fade transition and moves the player to the next area.
+  car: {fileID: 0}
+  backwardsDistance: 2
+  backwardsSpeed: 3
+  backwardsTransitionDelay: 0.5
+  forwardsDistance: 2
+  forwardsSpeed: 3
+  forwardsTransitionDelay: 0.5
 --- !u!4 &1291015855
 Transform:
   m_ObjectHideFlags: 0
@@ -53236,6 +53243,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 10000
+  gameManager: {fileID: 0}
+  photoGalleryList: []
+  collectionTime: 0
 --- !u!114 &1360617584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53249,9 +53259,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemoCameraMovement
   rearCamera: {fileID: 1848556361}
+  freeLookCamera: {fileID: 0}
+  horizontalRotation: 0
+  verticalRotation: 0
+  cameraRotationSpeed: 0
+  isZoomingIn: 0
   isResetCenter: 0
   verticalAngle: 0
   horizontalAngle: 0
+  clampAngle: 0
+  LookingHorizontalAngle: 90
   hasSeenRear: 0
   goingBackToCenter: 0
   rearInput: 0
@@ -53261,6 +53278,10 @@ MonoBehaviour:
   isNotLookingAtLaptop: 0
   laptopFunction: 0
   isTurning: 0
+  canUseCamera: 0
+  zoomInFunction: 0
+  zoomOutFunction: 0
+  getAxis: 0
   canReset: 0
   Target: {fileID: 287741145}
   Original: {fileID: 1635367594}
@@ -53281,6 +53302,13 @@ MonoBehaviour:
   waitTime: 2
   targetLocation: {fileID: 0}
   tldr: This script loads a fade transition and moves the player to the next area.
+  car: {fileID: 0}
+  backwardsDistance: 2
+  backwardsSpeed: 3
+  backwardsTransitionDelay: 0.5
+  forwardsDistance: 2
+  forwardsSpeed: 3
+  forwardsTransitionDelay: 0.5
 --- !u!114 &1360617586
 MonoBehaviour:
   m_ObjectHideFlags: 0
