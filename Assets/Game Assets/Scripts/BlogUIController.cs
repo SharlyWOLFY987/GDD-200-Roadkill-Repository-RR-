@@ -18,11 +18,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
             inLaptop = true;
             blogUI.SetActive(!blogUI.activeSelf);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
         }else if(Input.GetKeyDown(KeyCode.Tab) && inLaptop == true)
         {
             inLaptop = false;
             blogUI.SetActive(!blogUI.activeSelf);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }
