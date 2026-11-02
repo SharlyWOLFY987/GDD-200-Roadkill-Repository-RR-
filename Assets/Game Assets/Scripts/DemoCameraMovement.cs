@@ -114,6 +114,7 @@ public class DemoCameraMovement : MonoBehaviour
                     {
                         isTurning = false;
                         isLookingAtLaptop = true;
+                        isResetCenter = false;
                     }
 
                     if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == true)
@@ -296,7 +297,7 @@ public class DemoCameraMovement : MonoBehaviour
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
-
+                canReset = true;
             }
         }
     }
