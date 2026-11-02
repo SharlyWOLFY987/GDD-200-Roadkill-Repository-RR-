@@ -10,15 +10,16 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
     [TextArea(1, 1000)]
     [Tooltip("Doesn't do anything! It needs to be here anyways")]
     public string tldr = "";
-    private List<Texture> playerPhotoGallery;
+    public List<Texture> playerPhotoGallery;
     private List<RawImage> photoSlots; // all avaliable photo slots in the gallery
     void Start()
     {
-        playerPhotoGallery = GameObject.Find("Main Camera").GetComponent<CameraRecognizeObjects>().photoGalleryList; //assigns the player gallery from the script in our script;
+        playerPhotoGallery = GameObject.Find("Main Camera").GetComponent<CameraRecognizeObjects>().photoGalleryList; //assigns the player gallery from the script in our script
+        //Debug.Log(GameObject.Find("Main Camera"));
         photoSlots = new List<RawImage>();//creates the storage
         foreach(Transform child in transform) // for every RawImage object on the GameObject this is attached to
         {
-            photoSlots.Add(child.GetComponent<RawImage>());
+            photoSlots.Add(child.GetComponent<RawImage>()); //gets the RawImage for each image slot and adds it to the list used to assign photos
             //Debug.Log("Added RawImage to list!");
         }
     }
@@ -34,9 +35,11 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
     }
     void updatePhotos()
     {
-        for(int i = 0; i < photoSlots.Count; i++) //photoSlots.Count is the length of the photoSlots list
+        for(int i = 0; i < playerPhotoGallery.Count; i++) //playerPhotoGallery.Count is how many photos the player has
         {
-            photoSlots[i].texture = playerPhotoGallery[i];
+            //Debug.Log("Photo assigned correctly!");
+            photoSlots[i].texture = playerPhotoGallery[i]; //sets each photo slot to a photo from the gallery
+            //for whatever reason the texture is being updated but not displayed, I don't know why this is no longer working
         }
     }
 }
