@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class DemoCameraMovement : MonoBehaviour
 {
     public GameObject rearCamera;
+    public GameObject cameraArt;
 
 
     public float zoomInFov;
@@ -66,7 +67,8 @@ public class DemoCameraMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         isTurning = true;
         canUseCamera = false;
-        freeLookCamera = Camera.main;
+       freeLookCamera = Camera.main;
+        cameraArt.SetActive(false);
     }
 
 
@@ -335,6 +337,7 @@ public class DemoCameraMovement : MonoBehaviour
                     zoomInFunction = false;
                     isZoomingIn = true;
                     getAxis = true;
+                    cameraArt.SetActive(true);
                 }
             }
 
@@ -346,7 +349,8 @@ public class DemoCameraMovement : MonoBehaviour
                 {
                     zoomOutFunction = false;
                     isZoomingIn = false;
-                    canUseCamera = false;         
+                    canUseCamera = false;
+                    cameraArt.SetActive(false);
                 }
                 horizontalRotation = Mathf.MoveTowards(horizontalRotation, 0f, zoomOutSpeed * Time.deltaTime);
                 verticalRotation = Mathf.MoveTowards(verticalRotation, 0f, zoomOutSpeed * Time.deltaTime);
