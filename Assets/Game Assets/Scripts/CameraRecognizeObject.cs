@@ -63,14 +63,14 @@ public class CameraRecognizeObjects : MonoBehaviour
                         //hit.collider.gameObject.SetActive(false); // replaced with coroutine
                     }
                     else{
-                        Debug.Log("No photo could be found."); //if no photo matches the thing (For testing)
+                        //Debug.Log("No photo could be found."); //if no photo matches the thing (For testing)
                     }
                 }
             }
         }
         else
         {
-            Debug.Log("Nothing was detected."); //for bug fixing
+            //Debug.Log("Nothing was detected."); //for bug fixing
         }
     }
 }
