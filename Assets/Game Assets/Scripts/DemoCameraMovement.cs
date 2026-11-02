@@ -6,7 +6,8 @@ public class DemoCameraMovement : MonoBehaviour
     public GameObject rearCamera;
 
 
-
+    public float zoomInFov;
+    public float zoomOutFov;
 
     public Camera freeLookCamera;
     private float zoomSpeed = 100f;
@@ -328,8 +329,8 @@ public class DemoCameraMovement : MonoBehaviour
             if(zoomInFunction == true)
             {
               
-                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, 30f, zoomSpeed * Time.deltaTime);
-                if(freeLookCamera.fieldOfView == 30f)
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
+                if(freeLookCamera.fieldOfView == zoomInFov)
                 {
                     zoomInFunction = false;
                     isZoomingIn = true;
@@ -340,8 +341,8 @@ public class DemoCameraMovement : MonoBehaviour
             if(zoomOutFunction == true)
             {
                 getAxis = false;
-                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, 60f, zoomSpeed * Time.deltaTime);
-                if (freeLookCamera.fieldOfView == 60f)
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomOutFov)
                 {
                     zoomOutFunction = false;
                     isZoomingIn = false;
