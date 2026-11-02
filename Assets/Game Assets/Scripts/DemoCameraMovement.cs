@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 public class DemoCameraMovement : MonoBehaviour
 {
     public GameObject rearCamera;
+    public GameObject cameraArt;
 
 
-
+    public float zoomInFov;
+    public float zoomOutFov;
 
     public Camera freeLookCamera;
     private float zoomSpeed = 100f;
@@ -65,7 +67,8 @@ public class DemoCameraMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         isTurning = true;
         canUseCamera = false;
-        freeLookCamera = Camera.main;
+       freeLookCamera = Camera.main;
+        cameraArt.SetActive(false);
     }
 
 
@@ -114,6 +117,7 @@ public class DemoCameraMovement : MonoBehaviour
                     {
                         isTurning = false;
                         isLookingAtLaptop = true;
+                        isResetCenter = false;
                     }
 
                     if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == true)
@@ -296,7 +300,7 @@ public class DemoCameraMovement : MonoBehaviour
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
-
+                canReset = true;
             }
         }
     }
@@ -327,24 +331,26 @@ public class DemoCameraMovement : MonoBehaviour
             if(zoomInFunction == true)
             {
               
-                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, 30f, zoomSpeed * Time.deltaTime);
-                if(freeLookCamera.fieldOfView == 30f)
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
+                if(freeLookCamera.fieldOfView == zoomInFov)
                 {
                     zoomInFunction = false;
                     isZoomingIn = true;
                     getAxis = true;
+                    cameraArt.SetActive(true);
                 }
             }
 
             if(zoomOutFunction == true)
             {
                 getAxis = false;
-                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, 60f, zoomSpeed * Time.deltaTime);
-                if (freeLookCamera.fieldOfView == 60f)
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomOutFov)
                 {
                     zoomOutFunction = false;
                     isZoomingIn = false;
-                    canUseCamera = false;         
+                    canUseCamera = false;
+                    cameraArt.SetActive(false);
                 }
                 horizontalRotation = Mathf.MoveTowards(horizontalRotation, 0f, zoomOutSpeed * Time.deltaTime);
                 verticalRotation = Mathf.MoveTowards(verticalRotation, 0f, zoomOutSpeed * Time.deltaTime);
