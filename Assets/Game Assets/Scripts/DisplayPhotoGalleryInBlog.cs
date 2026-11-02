@@ -39,7 +39,7 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
         {
             //Debug.Log("Photo assigned correctly!");
             photoSlots[i].texture = playerPhotoGallery[i]; //sets each photo slot to a photo from the gallery
-            //for whatever reason the texture is being updated but not displayed, I don't know why this is no longer working
+            photoSlots[i].color = new Color(255, 255, 255);
         }
     }
 }
