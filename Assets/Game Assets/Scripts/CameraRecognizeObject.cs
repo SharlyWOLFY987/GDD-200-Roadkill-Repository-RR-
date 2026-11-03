@@ -31,6 +31,7 @@ public class CameraRecognizeObjects : MonoBehaviour
     private EvidencePhotoArray evidencePhotoArray; //in-script reference for the evidence photos
     public List<Texture> photoGalleryList; //the list where the player's photos are stored. List is used for flexibility (the size is variable)
     public int collectionTime;
+    private bool canTakePhoto = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,9 +40,11 @@ public class CameraRecognizeObjects : MonoBehaviour
     IEnumerator RemoveEvidenceRoutine(GameObject obj)
     {
         Debug.Log("Removing "+ obj.name +"!");
+        canTakePhoto = false; //cannot take photo while evidence is being collected
         //play sound of car door openin/closing here!
         yield return new WaitForSeconds(collectionTime); //wait for collectionTime seconds, then disable the object
         obj.SetActive(false);
+        canTakePhoto = true;
         Debug.Log("Removed "+ obj.name +"!");
 
     }
@@ -58,7 +61,7 @@ public class CameraRecognizeObjects : MonoBehaviour
             photoCameraArt.SetActive(true);
             //Debug.Log(objectHitName + " was detected."); //gets the name of the game object the raycast hits
             //toggle 'photo is ready' UI element! (the same as the previous one with a couple of element added on)
-            if (Input.GetMouseButtonDown(0)) //when left mouse is pressed
+            if (Input.GetMouseButtonDown(0) && canTakePhoto) //when left mouse is pressed
             {
                 
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)

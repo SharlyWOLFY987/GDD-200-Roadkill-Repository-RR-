@@ -39,7 +39,7 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
         {
             //Debug.Log("Photo assigned correctly!");
             photoSlots[i].texture = playerPhotoGallery[i]; //sets each photo slot to a photo from the gallery
-            photoSlots[i].color = new Color(255, 255, 255);
+            photoSlots[i].color = new Color(255, 255, 255); //sets color to white so the image looks right
         }
     }
 }
