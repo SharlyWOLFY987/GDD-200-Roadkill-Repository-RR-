@@ -41,9 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Title screen logo
-    uniqueID: 944531425
-    locked: 0
   - name: SNOW
     uniqueID: 2254588563
     locked: 0
@@ -53,14 +50,14 @@ TagManager:
   - name: tree
     uniqueID: 2454962787
     locked: 0
-  - name: Evidence
-    uniqueID: 2649547197
-    locked: 0
   - name: Railing
     uniqueID: 1967728417
     locked: 0
   - name: shed
     uniqueID: 823555603
+    locked: 0
+  - name: Evidence
+    uniqueID: 2649547197
     locked: 0
   - name: Rocks
     uniqueID: 892966735
