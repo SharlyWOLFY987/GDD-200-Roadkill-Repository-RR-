@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class PostImageSelection : MonoBehaviour
 {
+    [Header("What to Know about This Script")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string tldr = "";
 
     public int photoIndex = 0; // used to track what photo the player is selecting
     public List<Texture> playerPhotoGallery;
@@ -26,6 +30,17 @@ public class PostImageSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //prevents negative photo index
+        if(photoIndex < 0)
+        {
+            photoIndex = 0;
+        }
+        //prevents photo index being greater than the amount of photos the player has
+        if(photoIndex > playerPhotoGallery.Count)
+        {
+            photoIndex = playerPhotoGallery.Count; 
+        }
+
         if(playerPhotoGallery.Count != 0)
         {
             if(photoIndex == 0)
@@ -46,10 +61,13 @@ public class PostImageSelection : MonoBehaviour
             }
             GetComponent<RawImage>().texture = playerPhotoGallery[photoIndex];
         }
-        else
+        else // if the photo gallery is empty
         {
-            GetComponent<RawImage>().texture = null;
+            //removes image in photo gallery if empty and resets the color
+            GetComponent<RawImage>().texture = default;
             GetComponent<RawImage>().color = new Color(50, 56, 67);
+            previousPhotoButton.interactable = false;
+            nextPhotoButton.interactable = false;
         }
     }
         

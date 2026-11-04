@@ -30,7 +30,7 @@ public class BlogPostClass : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //parentInCanvas = GameObject.Find("BlogPostViewing");
+        parentInCanvas = GameObject.Find("Content");
         createBlogPost = GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
