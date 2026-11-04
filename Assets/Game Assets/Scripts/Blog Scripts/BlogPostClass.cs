@@ -30,12 +30,12 @@ public class BlogPostClass : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        parentInCanvas = GameObject.Find("Canvas");
+        parentInCanvas = GameObject.Find("BlogPostViewingCanvas");
         createBlogPost = GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
         evidencePhoto = createBlogPost.postImage;
-        transform.SetParent(parentInCanvas.transform); // parents comment to canvas so it's visible
+        transform.SetParent(parentInCanvas.transform); // parents comment prefab to canvas so it's visible
 
         maxEngagement = UnityEngine.Random.Range(10, 50);
         
@@ -44,6 +44,7 @@ public class BlogPostClass : MonoBehaviour
         //gets the name of the entity in the selected image
         String[] parts = createBlogPost.postImage.texture.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
+        entityInPhoto = entityInPhoto +"\n"; // for 
         Debug.Log("Entity in photo: " + entityInPhoto);
         //Debug.Log(entityInPhoto.Length);
         /*

@@ -313,7 +313,7 @@ MonoBehaviour:
   likesDisplay: {fileID: 4610743161468925890}
   dislikesDisplay: {fileID: 532393253643784965}
   postImageDisplay: {fileID: 8804592500897885536}
-  canvasReference: {fileID: 0}
+  nameOfParentObject: Canvas
   likes: 0
   dislikes: 0
   maxEngagement: 0

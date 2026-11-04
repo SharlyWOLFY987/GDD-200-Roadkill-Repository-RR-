@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 public class CreateBlogPost : MonoBehaviour
 {
     public GameObject blogPostPrefab;
+    private GameManager gameManager;
     //public GameObject blogPostView;
     //private BlogPostViewingArea blogPostViewingArea;
     private BlogPostClass blogPostClass;
@@ -21,6 +22,8 @@ public class CreateBlogPost : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         blogPostClass = blogPostPrefab.GetComponent<BlogPostClass>(); // gets the script from the blog post
         postImageSelection = GameObject.Find("PostImageSelection").GetComponent<PostImageSelection>(); // gets the script from image selection
         cryptidSelection = GetComponent<ToggleGroup>(); //gets the toggle group for post creation
@@ -38,6 +41,7 @@ public class CreateBlogPost : MonoBehaviour
         //updates blog image
         postImage.texture = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
         GameObject newPost = Instantiate(blogPostPrefab);
+        gameManager.createdBlogPosts.Add(newPost); // adds the post to 
         //blogPostViewingArea.createdBlogPosts.Add(newPost);
 
         StartCoroutine(RemoveImageFromGallery());

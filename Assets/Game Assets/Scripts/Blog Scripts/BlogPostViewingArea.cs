@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class BlogPostViewingArea : MonoBehaviour
 {
-    public List<GameObject> createdBlogPosts;
     public GameObject blogPostViewingArea;
+    private GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        blogPostViewingArea.GetComponent<RectTransform>().sizeDelta = new Vector2(204.2384f, 170 * createdBlogPosts.Count);
-        foreach(GameObject post in createdBlogPosts)
+        blogPostViewingArea.GetComponent<RectTransform>().sizeDelta = new Vector2(204.2384f, 170 * gameManager.createdBlogPosts.Count);
+        foreach(GameObject post in gameManager.createdBlogPosts)
         {
-            post.transform.position = new Vector2(204.2384f, 170 * createdBlogPosts.Count);
+            post.transform.position = new Vector2(204.2384f, 170 * gameManager.createdBlogPosts.Count);
         }
     }
 }
