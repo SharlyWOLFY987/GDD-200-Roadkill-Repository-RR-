@@ -993,7 +993,7 @@ RectTransform:
   m_GameObject: {fileID: 667447462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5262, y: 2.5262, z: 2.5262}
+  m_LocalScale: {x: 0.93340564, y: 0.93340564, z: 0.93340564}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 343985018}
@@ -1004,7 +1004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 182, y: 10}
+  m_AnchoredPosition: {x: -152, y: 75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667447464
@@ -1503,6 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreateBlogPost
   blogPostPrefab: {fileID: 2257706662394762369, guid: 0e7d88bc3f56b6741be4add5830099f5, type: 3}
+  blogPostView: {fileID: 0}
   postTitleInput: {fileID: 343985019}
   postTitle: 
   cryptidTag: 
@@ -3074,8 +3075,8 @@ MonoBehaviour:
   maxDistance: 0
   gameManager: {fileID: 0}
   photoGalleryList:
-  - {fileID: 2800000, guid: 90e55814810acff4da2d60819c893289, type: 3}
-  - {fileID: 2800000, guid: 86c64f2945da45c4a8156c756cfb3e63, type: 3}
+  - {fileID: 2800000, guid: e3ce5e0c7b412284985626453ddec247, type: 3}
+  - {fileID: 2800000, guid: 8f0b296bec95f7a4eb4a60c02cc7eb56, type: 3}
   - {fileID: 2800000, guid: cba12c865684c0044a740d07b4c299c1, type: 3}
   collectionTime: 0
 --- !u!1660057539 &9223372036854775807

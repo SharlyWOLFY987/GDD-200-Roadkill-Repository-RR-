@@ -26,23 +26,31 @@ public class PostImageSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(photoIndex == 0)
+        if(playerPhotoGallery.Count != 0)
         {
-            previousPhotoButton.interactable = false; //keeps the button visible but not usable
+            if(photoIndex == 0)
+            {
+                previousPhotoButton.interactable = false; //keeps the button visible but not usable
+            }
+            else
+            {
+                previousPhotoButton.interactable = true;
+            }
+            if(photoIndex == playerPhotoGallery.Count - 1) //if at the end of the photo gallery, disable the button
+            {
+                nextPhotoButton.interactable = false; //keeps the button visible but not usable
+            }
+            else
+            {
+                nextPhotoButton.interactable = true;
+            }
+            GetComponent<RawImage>().texture = playerPhotoGallery[photoIndex];
         }
         else
         {
-            previousPhotoButton.interactable = true;
+            GetComponent<RawImage>().texture = null;
+            GetComponent<RawImage>().color = new Color(50, 56, 67);
         }
-        if(photoIndex == playerPhotoGallery.Count - 1) //if at the end of the photo gallery, disable the button
-        {
-            nextPhotoButton.interactable = false; //keeps the button visible but not usable
-        }
-        else
-        {
-            nextPhotoButton.interactable = true;
-        }
-        //add some failsafe for out of range errors
-        GetComponent<RawImage>().texture = playerPhotoGallery[photoIndex];
     }
+        
 }

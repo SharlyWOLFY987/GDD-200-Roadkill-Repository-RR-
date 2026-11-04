@@ -39,7 +39,7 @@ public class CameraRecognizeObjects : MonoBehaviour
     }
     IEnumerator RemoveEvidenceRoutine(GameObject obj)
     {
-        Debug.Log("Removing "+ obj.name +"!");
+        //Debug.Log("Removing "+ obj.name +"!");
         canTakePhoto = false; //cannot take photo while evidence is being collected
         //play sound of car door openin/closing here!
         yield return new WaitForSeconds(collectionTime); //wait for collectionTime seconds, then disable the object
