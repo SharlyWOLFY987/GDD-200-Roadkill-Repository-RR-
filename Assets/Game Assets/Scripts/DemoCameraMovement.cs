@@ -308,7 +308,7 @@ public class DemoCameraMovement : MonoBehaviour
 
     void FreeLook()
     {
-        if(horizontalAngle == -LookingHorizontalAngle|| horizontalAngle == LookingHorizontalAngle)
+        if(horizontalAngle == -LookingHorizontalAngle|| horizontalAngle == LookingHorizontalAngle || horizontalAngle == 0f)
         {
             if(isZoomingIn == false)
             {
