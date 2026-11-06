@@ -26,7 +26,9 @@ public class BlogPostClass : MonoBehaviour
     public int likes;
     public int dislikes;
     public int maxEngagement; // the max likes that can be on a post
-    
+    //comments
+    private PostComment postComment; //calls the comment script to run - Alana
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +38,8 @@ public class BlogPostClass : MonoBehaviour
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
         evidencePhoto = createBlogPost.postImage;
+
+        postComment = GetComponent<PostComment>(); // - Alana
 
         maxEngagement = UnityEngine.Random.Range(10, 50);
         
@@ -60,10 +64,12 @@ public class BlogPostClass : MonoBehaviour
         if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is correctly tagged!");
+            postComment.ShowComment(true); // - Alana
             StartCoroutine(EvaluatePostAccuracy("correct"));
         }else if(!String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is incorrectly tagged!");
+            postComment.ShowComment(false); // - Alana
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
     }
