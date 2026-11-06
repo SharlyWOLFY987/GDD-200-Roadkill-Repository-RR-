@@ -60,7 +60,8 @@ public class DemoCameraMovement : MonoBehaviour
     public Transform Target;
     public Transform Original;
 
-
+    // light toggle
+    public GameObject playerLight;
     void Start()
     {
         Cursor.visible = false;
@@ -69,6 +70,7 @@ public class DemoCameraMovement : MonoBehaviour
         canUseCamera = false;
        freeLookCamera = Camera.main;
         cameraArt.SetActive(false);
+        playerLight.SetActive(false); // 
     }
 
 
@@ -330,7 +332,7 @@ public class DemoCameraMovement : MonoBehaviour
 
             if(zoomInFunction == true)
             {
-              
+                playerLight.SetActive(true); //enables the camera light
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
                 if(freeLookCamera.fieldOfView == zoomInFov)
                 {
@@ -344,6 +346,7 @@ public class DemoCameraMovement : MonoBehaviour
             if(zoomOutFunction == true)
             {
                 getAxis = false;
+                playerLight.SetActive(false); //disables the camera light
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
                 if (freeLookCamera.fieldOfView == zoomOutFov)
                 {
