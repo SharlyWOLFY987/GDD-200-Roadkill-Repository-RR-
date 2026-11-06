@@ -19,10 +19,6 @@ public class CreateBlogPost : MonoBehaviour
     public String cryptidTag;
     public ToggleGroup cryptidSelection;
     public Texture postImage;
-
-    [Header("For Getting Image to Blog Post Page")]
-    public Texture imageForNewBlogPost;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,22 +28,6 @@ public class CreateBlogPost : MonoBehaviour
         postImageSelection = GameObject.Find("PostImageSelection").GetComponent<PostImageSelection>(); // gets the script from image selection
         cryptidSelection = GetComponent<ToggleGroup>(); //gets the toggle group for post creation
     }
-    /*
-    void OnDisable()
-    {
-        if(onDisablePhoto == null && gameManager.createdBlogPosts.Count == 0)
-        {
-            onDisablePhoto = postImage;
-        }
-    }
-    void OnEnable()
-    {
-        if(onDisablePhoto == null && gameManager.createdBlogPosts.Count == 0)
-        {
-            onDisablePhoto = postImage;
-        }
-    }
-    */
     public void CreatePost()
     {
         Toggle activeToggle = cryptidSelection.ActiveToggles().FirstOrDefault();
@@ -59,8 +39,6 @@ public class CreateBlogPost : MonoBehaviour
         postTitle = postTitleInput.GetComponent<TMP_InputField>().text;
         //updates blog image
         postImage = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
-        imageForNewBlogPost = postImage;
-
         // instantiates blog post at the position and rotation of the blog post viewing area, as well as parents to it
         GameObject newPost = Instantiate(blogPostPrefab, blogPostView.transform.position, blogPostView.transform.rotation, blogPostView.transform); 
         gameManager.createdBlogPosts.Add(newPost); // adds the post to 
