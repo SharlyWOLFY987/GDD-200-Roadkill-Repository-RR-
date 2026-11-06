@@ -1,10 +1,22 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class DemoCameraMovement : MonoBehaviour
 {
     public GameObject rearCamera;
+    public GameObject cameraArt;
 
+
+    public float zoomInFov;
+    public float zoomOutFov;
+
+    public Camera freeLookCamera;
+    private float zoomSpeed = 100f;
+    public float horizontalRotation;
+    public float verticalRotation;
+    public float cameraRotationSpeed;
+    private float zoomOutSpeed = 100f;
+    public bool isZoomingIn;
 
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
@@ -18,6 +30,8 @@ public class DemoCameraMovement : MonoBehaviour
     // making variables for moving up and down, left and right that can later be changed via input.
     public float verticalAngle;
     public float horizontalAngle;
+    public float clampAngle;
+    public float LookingHorizontalAngle = 90f;
 
     // checks if player has looked in the rear
     public bool hasSeenRear = false;
@@ -35,6 +49,10 @@ public class DemoCameraMovement : MonoBehaviour
     public bool isNotLookingAtLaptop;
     public bool laptopFunction;
     public bool isTurning;
+    public bool canUseCamera = false;
+    public bool zoomInFunction;
+    public bool zoomOutFunction;
+    public bool getAxis;
 
     //checks if it can reset in the middle
     public bool canReset;
@@ -44,9 +62,13 @@ public class DemoCameraMovement : MonoBehaviour
 
 
     void Start()
-
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         isTurning = true;
+        canUseCamera = false;
+       freeLookCamera = Camera.main;
+        cameraArt.SetActive(false);
     }
 
 
@@ -54,68 +76,73 @@ public class DemoCameraMovement : MonoBehaviour
     void Update()
     {
 
-        // checks if you are pressing true and if the player is allowed to reset to the middle
-        if (Input.GetKeyDown(KeyCode.W) && canReset == true)
-        {
-            isResetCenter = true;
-        }
+       
 
 
 
         // moves left or right if the vertical angle is less than 0.1 (basically in the middle)
-        if (Mathf.Abs(verticalAngle) < 0.1f)
+        if (canUseCamera == false)
         {
-            if (isTurning == true)
+            if (Keyboard.current.wKey.wasPressedThisFrame && canReset == true)
             {
-                if (isLookingRight == false)
+                isResetCenter = true;
+            }
+
+            if (Mathf.Abs(verticalAngle) < 0.1f)
+            {
+                if (isTurning == true)
                 {
-                    if (Input.GetKey(KeyCode.A))
+                    if (isLookingRight == false)
                     {
-                        isLookingLeft = true;
+                        if (Keyboard.current.aKey.wasPressedThisFrame)
+                        {
+                            isLookingLeft = true;
+                        }
+                    }
+
+
+                    if (isLookingLeft == false)
+                    {
+                        if (Keyboard.current.dKey.wasPressedThisFrame)
+                        {
+                            isLookingRight = true;
+                        }
                     }
                 }
 
 
-                if (isLookingLeft == false)
+                if (isLookingRight == false && isLookingLeft == false)
                 {
-                    if (Input.GetKey(KeyCode.D))
+                    if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == false)
                     {
-                        isLookingRight = true;
+                        isTurning = false;
+                        isLookingAtLaptop = true;
+                        isResetCenter = false;
+                    }
+
+                    if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == true)
+                    {
+                        isNotLookingAtLaptop = true;
                     }
                 }
+
+
             }
 
 
-            if (isLookingRight == false && isLookingLeft == false)
+            // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
+            if (Mathf.Abs(horizontalAngle) < 0.1f)
             {
-                if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == false)
+                if (Keyboard.current.sKey.wasPressedThisFrame && rearInput == false)
                 {
-                    isTurning = false;
-                    isLookingAtLaptop = true;
+                    hasSeenRear = true;
+                }
+                if (Keyboard.current.sKey.wasPressedThisFrame && rearInput == true)
+                {
+                    goingBackToCenter = true;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Tab) && laptopFunction == true)
-                {
-                    isNotLookingAtLaptop = true;
-                }
             }
-
-
-        }
-
-
-        // moves up or down if the horizontal angle is less than 0.1 (basically in the middle)
-        if (Mathf.Abs(horizontalAngle) < 0.1f)
-        {
-            if (Input.GetKeyDown(KeyCode.S) && rearInput == false)
-            {
-                hasSeenRear = true;
-            }
-            if (Input.GetKeyDown(KeyCode.S) && rearInput == true)
-            {
-                goingBackToCenter = true;
-            }
-
         }
 
         ResetCamera();
@@ -123,6 +150,7 @@ public class DemoCameraMovement : MonoBehaviour
         LookingRightFunction();
         LaptopFunction();
         RearCameraFunction();
+        FreeLook();
     }
 
 
@@ -169,10 +197,10 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingLeft == true)
         {
             // moves the horizontal angle from its current angle to -60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -60f, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, -LookingHorizontalAngle, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired destination than it doesn't need to rotate anymore
-            if (horizontalAngle == -60f)
+            if (horizontalAngle == -LookingHorizontalAngle)
             {
                 isLookingLeft = false;
                 canReset = true;
@@ -193,10 +221,10 @@ public class DemoCameraMovement : MonoBehaviour
         if (isLookingRight == true)
         {
             // moves the horizontal angle from its current angle to 60 with returnSpeed so it moves smoothly
-            horizontalAngle = Mathf.MoveTowards(horizontalAngle, 60f, returnSpeed * Time.deltaTime);
+            horizontalAngle = Mathf.MoveTowards(horizontalAngle, LookingHorizontalAngle, returnSpeed * Time.deltaTime);
 
             // if horizontalAngle has met its desired desintation than it doesn't need to rotate anymore
-            if (horizontalAngle == 60f)
+            if (horizontalAngle == LookingHorizontalAngle)
             {
                 isLookingRight = false;
                 canReset = true;
@@ -272,10 +300,73 @@ public class DemoCameraMovement : MonoBehaviour
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
+                canReset = true;
+            }
+        }
+    }
+
+
+    void FreeLook()
+    {
+        if(horizontalAngle == -LookingHorizontalAngle|| horizontalAngle == LookingHorizontalAngle || horizontalAngle == 0f)
+        {
+            if(isZoomingIn == false)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    canUseCamera = true;
+                    zoomInFunction = true;
+                }
+            }
+            
+            if(isZoomingIn == true)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    zoomOutFunction = true;
+                }
+            }
+           
+
+            if(zoomInFunction == true)
+            {
+              
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
+                if(freeLookCamera.fieldOfView == zoomInFov)
+                {
+                    zoomInFunction = false;
+                    isZoomingIn = true;
+                    getAxis = true;
+                    cameraArt.SetActive(true);
+                }
+            }
+
+            if(zoomOutFunction == true)
+            {
+                getAxis = false;
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomOutFov)
+                {
+                    zoomOutFunction = false;
+                    isZoomingIn = false;
+                    canUseCamera = false;
+                    cameraArt.SetActive(false);
+                }
+                horizontalRotation = Mathf.MoveTowards(horizontalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                verticalRotation = Mathf.MoveTowards(verticalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
 
             }
 
-
+            if (getAxis == true)
+            {
+                horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed;
+                verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed;
+                horizontalRotation = Mathf.Clamp(horizontalRotation, -clampAngle, clampAngle);
+                verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
+            }
+           
         }
     }
 

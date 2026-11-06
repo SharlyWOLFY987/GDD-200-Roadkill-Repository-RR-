@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -17,12 +18,31 @@ public class LocationTransition : MonoBehaviour
     [Tooltip("Doesn't do anything! It needs to be here anyways")]
     public string tldr = "This script loads a fade transition and moves the player to the next area.";
 
+    [Header("Make Car Go Backwards")]
+    [SerializeField] private Transform car;
+    public float backwardsDistance = 2f;
+    public float backwardsSpeed = 3f;
+    public float backwardsTransitionDelay = 0.5f;
+
+    [Header("Make Car Go Forwards")]
+    public float forwardsDistance = 2f;
+    public float forwardsSpeed = 3f;
+    public float forwardsTransitionDelay = 0.5f;
+
+    [Header("Other Scripts")]
+    [SerializeField] private DemoCameraMovement cameraMovement;
+    [SerializeField] private NewMonoBehaviourScript laptopScript;
+
     private bool isFading = false;
     private Transform player;
+
+    public Transform CurrentLocation { get; private set; }
 
     private void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log($"LocationTransition running on {gameObject.name}");
+        Debug.Log($"Target = {targetLocation}");
 
         if (playerObj != null)
         {
@@ -35,19 +55,58 @@ public class LocationTransition : MonoBehaviour
             c.a = 0f;
             fadeImage.color = c;
         }
+        CurrentLocation = targetLocation;
     }
     //Temporarily set as the "K" key. Will be changed when map is created.
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && !isFading)
+
+    }
+    //Used to find why location teleport didn't work
+    /*private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            StartCoroutine(FadeAndTransition());
+            Debug.Log($"K pressed on {gameObject.name}");
+            Vector3 before = player.position;
+
+            if (targetLocation != null)
+            {
+                Debug.Log($"Teleporting to {targetLocation.position}");
+                player.position = targetLocation.position;
+            }
+
+            player.position = targetLocation.position;
+
+            Debug.Log("Before: " + before);
+            Debug.Log("After: " + player.position);
         }
     }
-
+    */
+    //New method to start transition from buttons
+    public void StartTransition()
+    {
+        if (!isFading)
+        {
+            StartCoroutine(LeaveLaptopAndTransition());
+        }
+    }
     private IEnumerator FadeAndTransition()
     {
         isFading = true;
+
+        // Move car backwards
+        StartCoroutine(
+    MoveCar(
+        -car.forward,
+        backwardsDistance,
+        backwardsSpeed
+    )
+);
+
+        yield return new WaitForSeconds(backwardsTransitionDelay);
+
+        yield return StartCoroutine(Fade(1f));
 
         // Fade to black
         yield return StartCoroutine(Fade(1f));
@@ -58,15 +117,33 @@ public class LocationTransition : MonoBehaviour
         // Move player
         if (player != null && targetLocation != null)
         {
-            player.position = targetLocation.position;
-        }
+            player.position =
+                targetLocation.position -
+                targetLocation.forward * forwardsDistance;
 
+            player.rotation = targetLocation.rotation;
+
+            // Update current location after successful teleport
+            CurrentLocation = targetLocation;
+        }
         // Fade back in
         yield return StartCoroutine(Fade(0f));
+
+        yield return new WaitForSeconds(forwardsTransitionDelay);
+
+        // Move forwards after transition
+        yield return StartCoroutine(
+            MoveCar(
+                car.forward,
+                forwardsDistance,
+                forwardsSpeed
+            )
+        );
 
         isFading = false;
     }
 
+    //code to make fade work
     private IEnumerator Fade(float targetAlpha)
     {
         if (fadeImage == null)
@@ -85,11 +162,68 @@ public class LocationTransition : MonoBehaviour
                 time / fadeDuration
           );
 
-          fadeImage.color = c;
+            fadeImage.color = c;
 
-          yield return null;
-      }
+            yield return null;
+        }
 
-      c.a = targetAlpha;       fadeImage.color = c;
-  }
+        c.a = targetAlpha; fadeImage.color = c;
+    }
+    // code to make car move
+    private IEnumerator MoveCar(
+    Vector3 direction,
+    float distance,
+    float speed)
+    {
+        Vector3 startPosition = car.position;
+        Vector3 targetPosition =
+            startPosition + direction.normalized * distance;
+
+        while (Vector3.Distance(car.position, targetPosition) > 0.01f)
+        {
+            car.position = Vector3.MoveTowards(
+                car.position,
+                targetPosition,
+                speed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        car.position = targetPosition;
+    }
+    public void SetTargetLocation(Transform destination)
+    {
+        targetLocation = destination;
+    }
+    private IEnumerator LeaveLaptopAndTransition()
+    {
+        if (cameraMovement != null && cameraMovement.laptopFunction)
+        {
+            // Close laptop UI
+            if (laptopScript != null)
+            {
+                laptopScript.inLaptop = false;
+                laptopScript.blogUI.SetActive(false);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
+            // Tell camera to leave laptop view
+            cameraMovement.isNotLookingAtLaptop = true;
+
+            // Wait for camera to finish moving back
+            yield return new WaitUntil(() => !cameraMovement.laptopFunction);
+
+            // Make sure camera is centered
+            cameraMovement.horizontalAngle = 0f;
+            cameraMovement.verticalAngle = 0f;
+            cameraMovement.transform.localRotation = Quaternion.identity;
+
+            yield return null;
+        }
+
+        yield return StartCoroutine(FadeAndTransition());
+    }
 }
