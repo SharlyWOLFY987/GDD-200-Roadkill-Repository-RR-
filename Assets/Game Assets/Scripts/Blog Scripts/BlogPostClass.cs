@@ -41,27 +41,21 @@ public class BlogPostClass : MonoBehaviour
         
         DisplayPost();
 
+        CheckAccuracy();
+    }
+
+    void OnEnable()
+    {
+        CheckAccuracy();
+    }
+
+    public void CheckAccuracy()
+    {
         //gets the name of the entity in the selected image
-        String[] parts = createBlogPost.postImage.name.Split('_');
+        String[] parts = evidencePhoto.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
-        entityInPhoto = entityInPhoto +"\n"; // for 
-        //Debug.Log("Entity in photo: " + entityInPhoto);
-        //Debug.Log(entityInPhoto.Length);
-        /*
-        for(int i = 0; i < entityInPhoto.Length; i++)
-        {
-            Debug.Log(entityInPhoto[i]);
-        }
-        */
+        entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
-        //Debug.Log("Comparison cryptid tag: " + postTagForComparison);
-        //Debug.Log(postTagForComparison.Length);
-        /*
-        for(int i = 0; i < postTagForComparison.Length; i++)
-        {
-            Debug.Log(postTagForComparison[i]);
-        }
-       */
         //compares the entity in the photo with the tag the post has
         if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
@@ -73,7 +67,6 @@ public class BlogPostClass : MonoBehaviour
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
     }
-
     public void DisplayPost() // updates all the parts that need to be updated
     {
         postTitleDisplay.GetComponent<TMP_Text>().SetText(thisPostTitle);
@@ -92,6 +85,7 @@ public class BlogPostClass : MonoBehaviour
                 yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 10.0f));
                 //Debug.Log("Added likes successfully!");
                 likes++;
+                gameManager.totalLikes++;
                 //postComments.Add("Positive comment");
             }
         }else if(accuracy == "incorrect") // if the tags are not correct
@@ -102,6 +96,7 @@ public class BlogPostClass : MonoBehaviour
                 yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 10.0f));
                 //Debug.Log("You've been disliked.");
                 dislikes++;
+                gameManager.totalDislikes++;
                 //postComments.Add("Negative comment");
             }
         }else if(accuracy == "roadkill")
@@ -114,7 +109,5 @@ public class BlogPostClass : MonoBehaviour
     {
         likesDisplay.GetComponent<TMP_Text>().SetText(likes.ToString());
         dislikesDisplay.GetComponent<TMP_Text>().SetText(dislikes.ToString());
-        gameManager.totalLikes += likes;
-        gameManager.totalDislikes += dislikes;
     }
 }
