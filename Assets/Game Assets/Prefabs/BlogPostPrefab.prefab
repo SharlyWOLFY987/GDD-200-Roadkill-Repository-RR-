@@ -241,8 +241,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2257706662394762369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.5}
+  m_LocalScale: {x: 2, y: 2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5918906464337454915}
@@ -252,9 +252,9 @@ RectTransform:
   - {fileID: 1246738741767680783}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64.9, y: 47}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1052, y: -605}
   m_SizeDelta: {x: 204.2384, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2731190080237870153
@@ -307,13 +307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff376ee7fcf3f2d458c05a15a914aac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlogPostClass
-  gameManager: {fileID: 0}
   postTitleDisplay: {fileID: 3090718858384164780}
   cryptidTagsDisplay: {fileID: 2628944952321108142}
   likesDisplay: {fileID: 4610743161468925890}
   dislikesDisplay: {fileID: 532393253643784965}
   postImageDisplay: {fileID: 8804592500897885536}
-  nameOfParentObject: Canvas
   likes: 0
   dislikes: 0
   maxEngagement: 0

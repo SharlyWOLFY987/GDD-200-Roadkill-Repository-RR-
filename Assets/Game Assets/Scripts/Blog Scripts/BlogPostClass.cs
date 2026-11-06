@@ -14,14 +14,14 @@ public class BlogPostClass : MonoBehaviour
     private List<String> postComments;  // where the comments will be stored, it's a list so you can add to it as much as you'd like
     //[Header("Getting User Input")]
     private CreateBlogPost createBlogPost; //reference to create blog post script for user input
-    public GameObject gameManager;
+    private GameManager gameManager;
     [Header("Post Component References")]
     public GameObject postTitleDisplay; // reference for the title of the post
     public GameObject cryptidTagsDisplay;
     public GameObject likesDisplay;
     public GameObject dislikesDisplay;
     public GameObject postImageDisplay; // weird gimmick with prefabs needs this to be a game object and not a RawImage type
-    public GameObject parentInCanvas;
+    private GameObject parentInCanvas; //the object that the post parents to
     // likes/dislikes
     public int likes;
     public int dislikes;
@@ -30,12 +30,15 @@ public class BlogPostClass : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        parentInCanvas = GameObject.Find("BlogPostViewingCanvas");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //reference to game manager script
+        parentInCanvas = GameObject.Find("BlogPostViewingAreaContent"); // this name should be whatever the object is for viewing the blogposts
         createBlogPost = GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
         evidencePhoto = createBlogPost.postImage;
-        transform.SetParent(parentInCanvas.transform); // parents comment prefab to canvas so it's visible
+        //while these lines are not working, nothing gets updated and the prefab remains blank
+        //transform.SetParent(parentInCanvas.transform); // parents comment prefab to canvas so it's visible
+        //transform.position = parentInCanvas.transform.position; // sets comment location to viewing area position
 
         maxEngagement = UnityEngine.Random.Range(10, 50);
         

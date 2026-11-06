@@ -10,7 +10,7 @@ public class CreateBlogPost : MonoBehaviour
 {
     public GameObject blogPostPrefab;
     private GameManager gameManager;
-    //public GameObject blogPostView;
+    public GameObject blogPostView;
     //private BlogPostViewingArea blogPostViewingArea;
     private BlogPostClass blogPostClass;
     private PostImageSelection postImageSelection;
@@ -40,9 +40,10 @@ public class CreateBlogPost : MonoBehaviour
         postTitle = postTitleInput.GetComponent<TMP_InputField>().text;
         //updates blog image
         postImage.texture = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
-        GameObject newPost = Instantiate(blogPostPrefab);
+
+        // instantiates blog post at the position and rotation of the blog post viewing area, as well as parents to it
+        GameObject newPost = Instantiate(blogPostPrefab, blogPostView.transform.position, blogPostView.transform.rotation, blogPostView.transform); 
         gameManager.createdBlogPosts.Add(newPost); // adds the post to 
-        //blogPostViewingArea.createdBlogPosts.Add(newPost);
 
         StartCoroutine(RemoveImageFromGallery());
 
