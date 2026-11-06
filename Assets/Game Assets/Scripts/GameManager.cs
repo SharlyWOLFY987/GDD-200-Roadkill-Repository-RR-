@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
         //sentimentRatio = totalLikes / totalDislikes ;
         if(sentimentRatio < 0.10 && createdBlogPosts.Count > 3)
         {
-            //end the game here
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // transitions to game over screen
         }
 
     }

@@ -9,10 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Beta Scene/MainMenu.unity
     guid: 812bb9cb4c4dba04c91b696a72d29b3d
   - enabled: 1
-    path: Assets/Scenes/CharliePangburn.unity
-    guid: d511eceee064d3b419e0cdb77ca99eff
+    path: Assets/Scenes/Beta Scene/Beta Scenes.unity
+    guid: 1274d97a49692e84da85ac170f849d95
+  - enabled: 1
+    path: Assets/Scenes/Beta Scene/Ending Screen.unity
+    guid: f264145902facef4b95497834685bc3e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
