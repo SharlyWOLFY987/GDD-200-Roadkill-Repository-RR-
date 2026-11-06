@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> createdBlogPosts;
 
+    public GameObject createBlogPostScriptObjectReference;
+
     public int totalLikes;
     public int totalDislikes;
     public float sentimentRatio;

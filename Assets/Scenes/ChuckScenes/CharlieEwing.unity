@@ -12186,6 +12186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   createdBlogPosts: []
+  createBlogPostScriptObjectReference: {fileID: 812209704}
   totalLikes: 0
   totalDislikes: 0
   sentimentRatio: 0

@@ -27,7 +27,6 @@ public class CreateBlogPost : MonoBehaviour
         blogPostClass = blogPostPrefab.GetComponent<BlogPostClass>(); // gets the script from the blog post
         postImageSelection = GameObject.Find("PostImageSelection").GetComponent<PostImageSelection>(); // gets the script from image selection
         cryptidSelection = GetComponent<ToggleGroup>(); //gets the toggle group for post creation
-        //blogPostViewingArea = blogPostView.GetComponent<BlogPostViewingArea>();
     }
     public void CreatePost()
     {

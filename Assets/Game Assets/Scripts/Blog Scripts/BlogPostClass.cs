@@ -32,7 +32,7 @@ public class BlogPostClass : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //reference to game manager script
         parentInCanvas = GameObject.Find("BlogPostViewingAreaContent"); // this name should be whatever the object is for viewing the blogposts
-        createBlogPost = GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
+        createBlogPost = gameManager.createBlogPostScriptObjectReference.GetComponent<CreateBlogPost>(); //previously GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
         evidencePhoto = createBlogPost.postImage;
