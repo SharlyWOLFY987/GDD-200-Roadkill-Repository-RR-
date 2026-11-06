@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1592058275323053779}
   - component: {fileID: 5803121363304812145}
   - component: {fileID: 8036732126010202869}
-  m_Layer: 0
-  m_Name: Ent_bark
+  m_Layer: 6
+  m_Name: TheEnt_Bark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1645420099
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 4ddcaa81619eef94b80931cbc5aa5328, type: 3}
@@ -111,5 +111,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.27, y: 12, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.0724945, y: 2.84663, z: 0.2}
+  m_Center: {x: -0.18281555, y: -2.0021992, z: 0}
