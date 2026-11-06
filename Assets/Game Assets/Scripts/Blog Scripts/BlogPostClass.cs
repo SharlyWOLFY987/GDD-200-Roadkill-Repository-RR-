@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class BlogPostClass : MonoBehaviour
 {
-    private RawImage evidencePhoto; //the photo from the photo gallery
+    private Texture evidencePhoto; //the photo from the photo gallery
     private String thisPostTitle; //self explanatory
     private String thisCryptidTag;
     private List<String> postComments;  // where the comments will be stored, it's a list so you can add to it as much as you'd like
@@ -35,17 +35,15 @@ public class BlogPostClass : MonoBehaviour
         createBlogPost = gameManager.createBlogPostScriptObjectReference.GetComponent<CreateBlogPost>(); //previously GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
+        //evidencePhoto = createBlogPost.postImage.texture;
         evidencePhoto = createBlogPost.postImage;
-        //while these lines are not working, nothing gets updated and the prefab remains blank
-        //transform.SetParent(parentInCanvas.transform); // parents comment prefab to canvas so it's visible
-        //transform.position = parentInCanvas.transform.position; // sets comment location to viewing area position
 
         maxEngagement = UnityEngine.Random.Range(10, 50);
         
         DisplayPost();
 
         //gets the name of the entity in the selected image
-        String[] parts = createBlogPost.postImage.texture.name.Split('_');
+        String[] parts = createBlogPost.postImage.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
         entityInPhoto = entityInPhoto +"\n"; // for 
         Debug.Log("Entity in photo: " + entityInPhoto);
@@ -56,7 +54,7 @@ public class BlogPostClass : MonoBehaviour
             Debug.Log(entityInPhoto[i]);
         }
         */
-        String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line
+        String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
         Debug.Log("Comparison cryptid tag: " + postTagForComparison);
         //Debug.Log(postTagForComparison.Length);
         /*
@@ -81,7 +79,8 @@ public class BlogPostClass : MonoBehaviour
     {
         postTitleDisplay.GetComponent<TMP_Text>().SetText(thisPostTitle);
         cryptidTagsDisplay.GetComponent<TMP_Text>().SetText("#"+thisCryptidTag);
-        postImageDisplay.GetComponent<RawImage>().texture = createBlogPost.postImage.texture; // see above explanation for postImageDisplay
+        //postImageDisplay.GetComponent<RawImage>().texture = createBlogPost.postImage.texture; // see above explanation for postImageDisplay
+        postImageDisplay.GetComponent<RawImage>().texture = evidencePhoto; //createBlogPost.imageForNewBlogPost
     }
 
     IEnumerator EvaluatePostAccuracy(String accuracy) // accuracy is if the tags match
@@ -114,7 +113,7 @@ public class BlogPostClass : MonoBehaviour
     {
         likesDisplay.GetComponent<TMP_Text>().SetText(likes.ToString());
         dislikesDisplay.GetComponent<TMP_Text>().SetText(dislikes.ToString());
-        //gameManager.totalLikes += likes;
-        //gameManager.totalDislikes += dislikes;
+        gameManager.totalLikes += likes;
+        gameManager.totalDislikes += dislikes;
     }
 }

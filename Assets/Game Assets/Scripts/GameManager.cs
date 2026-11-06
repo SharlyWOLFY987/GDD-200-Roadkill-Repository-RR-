@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,12 +14,17 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sentimentRatio = totalLikes / totalDislikes ;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //sentimentRatio = totalLikes / totalDislikes ;
+        if(sentimentRatio < 0.10 && createdBlogPosts.Count > 3)
+        {
+            //end the game here
+        }
+
     }
 }
