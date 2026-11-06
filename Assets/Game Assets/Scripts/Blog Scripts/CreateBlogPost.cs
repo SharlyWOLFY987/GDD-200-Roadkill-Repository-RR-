@@ -9,7 +9,8 @@ using Unity.VisualScripting;
 public class CreateBlogPost : MonoBehaviour
 {
     public GameObject blogPostPrefab;
-    //public GameObject blogPostView;
+    private GameManager gameManager;
+    public GameObject blogPostView;
     //private BlogPostViewingArea blogPostViewingArea;
     private BlogPostClass blogPostClass;
     private PostImageSelection postImageSelection;
@@ -17,14 +18,15 @@ public class CreateBlogPost : MonoBehaviour
     public String postTitle;
     public String cryptidTag;
     public ToggleGroup cryptidSelection;
-    public RawImage postImage;
+    public Texture postImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         blogPostClass = blogPostPrefab.GetComponent<BlogPostClass>(); // gets the script from the blog post
         postImageSelection = GameObject.Find("PostImageSelection").GetComponent<PostImageSelection>(); // gets the script from image selection
         cryptidSelection = GetComponent<ToggleGroup>(); //gets the toggle group for post creation
-        //blogPostViewingArea = blogPostView.GetComponent<BlogPostViewingArea>();
     }
     public void CreatePost()
     {
@@ -36,9 +38,10 @@ public class CreateBlogPost : MonoBehaviour
         //updates post title each time a post is created
         postTitle = postTitleInput.GetComponent<TMP_InputField>().text;
         //updates blog image
-        postImage.texture = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
-        GameObject newPost = Instantiate(blogPostPrefab);
-        //blogPostViewingArea.createdBlogPosts.Add(newPost);
+        postImage = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
+        // instantiates blog post at the position and rotation of the blog post viewing area, as well as parents to it
+        GameObject newPost = Instantiate(blogPostPrefab, blogPostView.transform.position, blogPostView.transform.rotation, blogPostView.transform); 
+        gameManager.createdBlogPosts.Add(newPost); // adds the post to 
 
         StartCoroutine(RemoveImageFromGallery());
 
