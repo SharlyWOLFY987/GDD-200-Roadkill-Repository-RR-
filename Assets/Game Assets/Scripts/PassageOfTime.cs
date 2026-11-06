@@ -8,7 +8,7 @@ public class PassageOfTime : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 
-    private float _timeRemaining = 600;
+    public float _timeRemaining = 600;
 
 
     void Start()
