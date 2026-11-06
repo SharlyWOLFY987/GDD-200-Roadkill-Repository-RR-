@@ -30,7 +30,7 @@ public class CameraRecognizeObjects : MonoBehaviour
     public GameObject gameManager; // game manager reference
     private EvidencePhotoArray evidencePhotoArray; //in-script reference for the evidence photos
     public List<Texture> photoGalleryList; //the list where the player's photos are stored. List is used for flexibility (the size is variable)
-    public int collectionTime;
+    public float collectionTime;
     private bool canTakePhoto = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

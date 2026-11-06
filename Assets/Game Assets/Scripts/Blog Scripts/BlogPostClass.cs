@@ -35,7 +35,6 @@ public class BlogPostClass : MonoBehaviour
         createBlogPost = gameManager.createBlogPostScriptObjectReference.GetComponent<CreateBlogPost>(); //previously GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
         thisPostTitle = createBlogPost.postTitle;
         thisCryptidTag = createBlogPost.cryptidTag;
-        //evidencePhoto = createBlogPost.postImage.texture;
         evidencePhoto = createBlogPost.postImage;
 
         maxEngagement = UnityEngine.Random.Range(10, 50);
@@ -46,7 +45,7 @@ public class BlogPostClass : MonoBehaviour
         String[] parts = createBlogPost.postImage.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
         entityInPhoto = entityInPhoto +"\n"; // for 
-        Debug.Log("Entity in photo: " + entityInPhoto);
+        //Debug.Log("Entity in photo: " + entityInPhoto);
         //Debug.Log(entityInPhoto.Length);
         /*
         for(int i = 0; i < entityInPhoto.Length; i++)
@@ -55,7 +54,7 @@ public class BlogPostClass : MonoBehaviour
         }
         */
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
-        Debug.Log("Comparison cryptid tag: " + postTagForComparison);
+        //Debug.Log("Comparison cryptid tag: " + postTagForComparison);
         //Debug.Log(postTagForComparison.Length);
         /*
         for(int i = 0; i < postTagForComparison.Length; i++)
@@ -67,11 +66,11 @@ public class BlogPostClass : MonoBehaviour
         if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is correctly tagged!");
-            EvaluatePostAccuracy("correct");
+            StartCoroutine(EvaluatePostAccuracy("correct"));
         }else if(!String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is incorrectly tagged!");
-            EvaluatePostAccuracy("incorrect");
+            StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
     }
 
@@ -99,7 +98,9 @@ public class BlogPostClass : MonoBehaviour
         {
             for(int i = 0; i < maxEngagement; i++)
             {
+                //Debug.Log("This is not correct (good thing)!");
                 yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 10.0f));
+                //Debug.Log("You've been disliked.");
                 dislikes++;
                 //postComments.Add("Negative comment");
             }

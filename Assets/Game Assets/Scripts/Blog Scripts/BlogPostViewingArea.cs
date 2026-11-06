@@ -15,10 +15,6 @@ public class BlogPostViewingArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        blogPostViewingArea.GetComponent<RectTransform>().sizeDelta = new Vector2(204.2384f, 170 * gameManager.createdBlogPosts.Count);
-        foreach(GameObject post in gameManager.createdBlogPosts)
-        {
-            post.transform.position = new Vector2(204.2384f, 170 * gameManager.createdBlogPosts.Count);
-        }
+        blogPostViewingArea.GetComponent<RectTransform>().sizeDelta = new Vector2(451.41f,378.8f + (170 * gameManager.createdBlogPosts.Count)); // -1 because the size shouldn't change with only 1 post
     }
 }
