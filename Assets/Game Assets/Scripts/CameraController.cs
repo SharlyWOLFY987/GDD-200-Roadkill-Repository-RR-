@@ -60,6 +60,8 @@ public class CameraController : MonoBehaviour
     public bool isNotLookingAtLaptop;
     public bool laptopFunction;
     
+    // light toggle
+    public GameObject playerLight;
     
   
     //transforms for looking in laptop and looking out of laptop
@@ -76,6 +78,7 @@ public class CameraController : MonoBehaviour
         cameraArt.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        playerLight.SetActive(false); // 
     }
 
 
@@ -320,6 +323,7 @@ public class CameraController : MonoBehaviour
             {
                 if (Keyboard.current.shiftKey.wasPressedThisFrame)
                 {
+                    playerLight.SetActive(true); //enables the camera light
                     canUseCamera = true;
                     zoomInFunction = true;
                 }
@@ -349,6 +353,7 @@ public class CameraController : MonoBehaviour
 
             if(zoomOutFunction == true)
             {
+                playerLight.SetActive(false); //enables the camera light
                 cameraArt.SetActive(false);
                 getAxis = false;
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
