@@ -5,12 +5,14 @@ using System.Linq;
 using System;
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.Mathematics;
+using UnityEditor.SearchService;
 
 public class CreateBlogPost : MonoBehaviour
 {
     public GameObject blogPostPrefab;
     private GameManager gameManager;
-    //public GameObject blogPostView;
+    public GameObject blogPostView;
     //private BlogPostViewingArea blogPostViewingArea;
     private BlogPostClass blogPostClass;
     private PostImageSelection postImageSelection;
@@ -18,7 +20,7 @@ public class CreateBlogPost : MonoBehaviour
     public String postTitle;
     public String cryptidTag;
     public ToggleGroup cryptidSelection;
-    public RawImage postImage;
+    public Texture postImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,7 +29,6 @@ public class CreateBlogPost : MonoBehaviour
         blogPostClass = blogPostPrefab.GetComponent<BlogPostClass>(); // gets the script from the blog post
         postImageSelection = GameObject.Find("PostImageSelection").GetComponent<PostImageSelection>(); // gets the script from image selection
         cryptidSelection = GetComponent<ToggleGroup>(); //gets the toggle group for post creation
-        //blogPostViewingArea = blogPostView.GetComponent<BlogPostViewingArea>();
     }
     public void CreatePost()
     {
@@ -39,15 +40,27 @@ public class CreateBlogPost : MonoBehaviour
         //updates post title each time a post is created
         postTitle = postTitleInput.GetComponent<TMP_InputField>().text;
         //updates blog image
-        postImage.texture = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
-        GameObject newPost = Instantiate(blogPostPrefab);
+        postImage = postImageSelection.playerPhotoGallery[postImageSelection.photoIndex];
+        // instantiates blog post at the position and rotation of the blog post viewing area, as well as parents to it
+        GameObject newPost = Instantiate(blogPostPrefab, blogPostView.transform.position, blogPostView.transform.rotation, blogPostView.transform); 
         gameManager.createdBlogPosts.Add(newPost); // adds the post to 
-        //blogPostViewingArea.createdBlogPosts.Add(newPost);
 
         StartCoroutine(RemoveImageFromGallery());
 
         postTitleInput.text = ""; // clears post title after the image has been removed
 
+    }
+
+    public void DelayedSetActive(GameObject obj)
+    {
+        StartCoroutine(DelayTime());
+        if(obj.activeSelf == true)
+        {
+            obj.SetActive(false);
+        }else if(obj.activeSelf == false)
+        {
+            obj.SetActive(true);
+        }
     }
 
     IEnumerator RemoveImageFromGallery() // neccesary because the new blog post would get the wrong image
@@ -58,6 +71,10 @@ public class CreateBlogPost : MonoBehaviour
         {
              postImageSelection.photoIndex--; // this prevents out of bounds error
         }
+    }
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(0.0001f); //wait for a miniscule amount of time
     }
     // Update is called once per frame
     void Update()
