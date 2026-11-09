@@ -47,6 +47,9 @@ TagManager:
   - name: Road
     uniqueID: 670818751
     locked: 0
+  - name: Rocks
+    uniqueID: 892966735
+    locked: 0
   - name: tree
     uniqueID: 2454962787
     locked: 0
@@ -58,9 +61,6 @@ TagManager:
     locked: 0
   - name: Evidence
     uniqueID: 2649547197
-    locked: 0
-  - name: Rocks
-    uniqueID: 892966735
     locked: 0
   - name: Car
     uniqueID: 3235606537

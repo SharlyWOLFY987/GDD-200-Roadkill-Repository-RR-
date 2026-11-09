@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3809167733004406638}
   - component: {fileID: 7922155808563868872}
   m_Layer: 6
-  m_Name: False_bottle
+  m_Name: false_bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
