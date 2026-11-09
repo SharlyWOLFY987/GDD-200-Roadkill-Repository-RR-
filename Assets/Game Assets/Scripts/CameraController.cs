@@ -314,7 +314,7 @@ public class CameraController : MonoBehaviour
 
     void FreeLook()
     {
-        if(horizontalAngle == -lookingHorizontalAngle || horizontalAngle == lookingHorizontalAngle || horizontalAngle == 0f)
+        if(horizontalAngle == -lookingHorizontalAngle)
         {
             if(isZoomingIn == false)
             {
@@ -368,12 +368,133 @@ public class CameraController : MonoBehaviour
             {
                 horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed;
                 verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed;
-                horizontalRotation = Mathf.Clamp(horizontalRotation, -clampAngle, clampAngle);
-                verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+                horizontalRotation = Mathf.Clamp(horizontalRotation, -55, 55);
+                verticalRotation = Mathf.Clamp(verticalRotation, -10, 10);
                 freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
             }
            
         }
+
+        if(horizontalAngle == 0f)
+        {
+            if (isZoomingIn == false)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    canUseCamera = true;
+                    zoomInFunction = true;
+                }
+            }
+
+            if (isZoomingIn == true)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    zoomOutFunction = true;
+                }
+            }
+
+
+            if (zoomInFunction == true)
+            {
+
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomInFov)
+                {
+                    cameraArt.SetActive(true);
+                    zoomInFunction = false;
+                    isZoomingIn = true;
+                    getAxis = true;
+                }
+            }
+
+            if (zoomOutFunction == true)
+            {
+                cameraArt.SetActive(false);
+                getAxis = false;
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomOutFov)
+                {
+                    zoomOutFunction = false;
+                    isZoomingIn = false;
+                    canUseCamera = false;
+                }
+                horizontalRotation = Mathf.MoveTowards(horizontalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                verticalRotation = Mathf.MoveTowards(verticalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
+
+            }
+
+            if (getAxis == true)
+            {
+                horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed;
+                verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed;
+                horizontalRotation = Mathf.Clamp(horizontalRotation, -10, 30);
+                verticalRotation = Mathf.Clamp(verticalRotation, -2, 10);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
+            }
+        }
+
+        if(horizontalAngle == lookingHorizontalAngle)
+        {
+            if (isZoomingIn == false)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    canUseCamera = true;
+                    zoomInFunction = true;
+                }
+            }
+
+            if (isZoomingIn == true)
+            {
+                if (Keyboard.current.shiftKey.wasPressedThisFrame)
+                {
+                    zoomOutFunction = true;
+                }
+            }
+
+
+            if (zoomInFunction == true)
+            {
+
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomInFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomInFov)
+                {
+                    cameraArt.SetActive(true);
+                    zoomInFunction = false;
+                    isZoomingIn = true;
+                    getAxis = true;
+                }
+            }
+
+            if (zoomOutFunction == true)
+            {
+                cameraArt.SetActive(false);
+                getAxis = false;
+                freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
+                if (freeLookCamera.fieldOfView == zoomOutFov)
+                {
+                    zoomOutFunction = false;
+                    isZoomingIn = false;
+                    canUseCamera = false;
+                }
+                horizontalRotation = Mathf.MoveTowards(horizontalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                verticalRotation = Mathf.MoveTowards(verticalRotation, 0f, zoomOutSpeed * Time.deltaTime);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
+
+            }
+
+            if (getAxis == true)
+            {
+                horizontalRotation += Input.GetAxis("Mouse X") * cameraRotationSpeed;
+                verticalRotation += Input.GetAxis("Mouse Y") * cameraRotationSpeed;
+                horizontalRotation = Mathf.Clamp(horizontalRotation, -30, 20);
+                verticalRotation = Mathf.Clamp(verticalRotation, -10, 10);
+                freeLookCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, horizontalRotation, 0f);
+            }
+        }
+
     }
 
 
