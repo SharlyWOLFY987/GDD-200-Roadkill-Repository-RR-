@@ -5,6 +5,8 @@ using System.Linq;
 using System;
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.Mathematics;
+using UnityEditor.SearchService;
 
 public class CreateBlogPost : MonoBehaviour
 {
@@ -49,6 +51,18 @@ public class CreateBlogPost : MonoBehaviour
 
     }
 
+    public void DelayedSetActive(GameObject obj)
+    {
+        StartCoroutine(DelayTime());
+        if(obj.activeSelf == true)
+        {
+            obj.SetActive(false);
+        }else if(obj.activeSelf == false)
+        {
+            obj.SetActive(true);
+        }
+    }
+
     IEnumerator RemoveImageFromGallery() // neccesary because the new blog post would get the wrong image
     {
         yield return new WaitForSeconds(0.01f);
@@ -57,6 +71,10 @@ public class CreateBlogPost : MonoBehaviour
         {
              postImageSelection.photoIndex--; // this prevents out of bounds error
         }
+    }
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(0.0001f); //wait for a miniscule amount of time
     }
     // Update is called once per frame
     void Update()

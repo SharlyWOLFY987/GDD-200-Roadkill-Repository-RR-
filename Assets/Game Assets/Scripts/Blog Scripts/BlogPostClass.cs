@@ -32,6 +32,11 @@ public class BlogPostClass : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //all content from this is in awake
+    }
+    void Awake()
+    {
+        Debug.Log("Awake is working!");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //reference to game manager script
         parentInCanvas = GameObject.Find("BlogPostViewingAreaContent"); // this name should be whatever the object is for viewing the blogposts
         createBlogPost = gameManager.createBlogPostScriptObjectReference.GetComponent<CreateBlogPost>(); //previously GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
@@ -47,7 +52,6 @@ public class BlogPostClass : MonoBehaviour
 
         CheckAccuracy();
     }
-
     void OnEnable()
     {
         CheckAccuracy();
