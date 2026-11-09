@@ -21,6 +21,9 @@ public class CreateBlogPost : MonoBehaviour
     public String cryptidTag;
     public ToggleGroup cryptidSelection;
     public Texture postImage;
+    [Header("Other Blog Tabs")]
+    public GameObject createPostTab;
+    public GameObject blogHomeTab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,7 +51,6 @@ public class CreateBlogPost : MonoBehaviour
         StartCoroutine(RemoveImageFromGallery());
 
         postTitleInput.text = ""; // clears post title after the image has been removed
-
     }
 
     public void DelayedSetActive(GameObject obj)
@@ -71,10 +73,15 @@ public class CreateBlogPost : MonoBehaviour
         {
              postImageSelection.photoIndex--; // this prevents out of bounds error
         }
+        Debug.Log("Photo was removed successfully!");
+        //will find a better fix later, good enough for now
+        yield return new WaitForSeconds(0.01f);
+        DelayedSetActive(blogHomeTab); // toggles on the blog home tab
+        DelayedSetActive(createPostTab); //toggles off the create post tab
     }
     IEnumerator DelayTime()
     {
-        yield return new WaitForSeconds(0.0001f); //wait for a miniscule amount of time
+        yield return new WaitForSeconds(0.00f); //wait for a miniscule amount of time
     }
     // Update is called once per frame
     void Update()

@@ -21,11 +21,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        sentimentRatio = totalDislikes/totalLikes;
         //sentimentRatio = totalLikes / totalDislikes ;
-        if(sentimentRatio < 0.10 && createdBlogPosts.Count > 3)
+        if(sentimentRatio < 0.10 && createdBlogPosts.Count > 3 && totalDislikes > 10)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // transitions to game over screen
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // transitions to game over screen
+            Debug.Log("You've been ratiod!");
         }
-
+        if(sentimentRatio > 0.8 && createdBlogPosts.Count > 8)
+        {
+            Debug.Log("You win the game!");
+        }
     }
 }
