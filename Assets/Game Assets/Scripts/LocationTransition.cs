@@ -30,7 +30,7 @@ public class LocationTransition : MonoBehaviour
     public float forwardsTransitionDelay = 0.5f;
 
     [Header("Other Scripts")]
-    [SerializeField] private DemoCameraMovement cameraMovement;
+    [SerializeField] private CameraController cameraMovement;
     [SerializeField] private NewMonoBehaviourScript laptopScript;
 
     private bool isFading = false;
