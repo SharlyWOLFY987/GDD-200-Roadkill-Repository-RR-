@@ -615,7 +615,7 @@ MonoBehaviour:
     - line: '|     m_Automatic: 0'
     - line: '|   - m_BuildTarget: WebGLSupport'
     - line: '|     m_APIs: 0b0000001c000000'
-    - line: '|     m_Automatic: 0'
+    - line: '|     m_Automatic: 1'
     - line: '|   m_BuildTargetVRSettings: []'
     - line: '|   m_DefaultShaderChunkSizeInMB: 16'
     - line: '|   m_DefaultShaderChunkCount: 0'
@@ -1053,3 +1053,19 @@ MonoBehaviour:
         m_WebGLClientBrowserPath: 
         m_WebGLClientBrowserType: 0
         m_WebGLTextureSubtarget: 1
+--- !u!114 &6422938741419801157
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 15010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Quality Settings
+  m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.Build.Profile.BuildProfileQualitySettings
+  m_DefaultQualityLevel: Mobile
+  m_QualityLevels:
+  - PC
+  - Mobile
