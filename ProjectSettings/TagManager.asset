@@ -59,6 +59,9 @@ TagManager:
   - name: shed
     uniqueID: 823555603
     locked: 0
+  - name: Entity
+    uniqueID: 3901198395
+    locked: 0
   - name: Evidence
     uniqueID: 2649547197
     locked: 0
