@@ -36,17 +36,21 @@ public class BlogPostClass : MonoBehaviour
     }
     void Awake()
     {
-        Debug.Log("Awake is working!");
+        //Debug.Log("Awake is working!");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //reference to game manager script
         parentInCanvas = GameObject.Find("BlogPostViewingAreaContent"); // this name should be whatever the object is for viewing the blogposts
         createBlogPost = gameManager.createBlogPostScriptObjectReference.GetComponent<CreateBlogPost>(); //previously GameObject.Find("CryptidOptions").GetComponent<CreateBlogPost>();
-        thisPostTitle = createBlogPost.postTitle;
+        //thisPostTitle = createBlogPost.postTitle; // updated but here for archive purposes
+        // title and tags 
+        thisPostTitle = createBlogPost.cryptidTag + " evidence!"; // sets the title to the tag
         thisCryptidTag = createBlogPost.cryptidTag;
+
+        //photo
         evidencePhoto = createBlogPost.postImage;
 
         postComment = GetComponent<PostComment>(); // - Alana
 
-        maxEngagement = UnityEngine.Random.Range(10, 50);
+        maxEngagement = UnityEngine.Random.Range(20, 40);
         
         DisplayPost();
 
@@ -89,10 +93,10 @@ public class BlogPostClass : MonoBehaviour
     {
         if(accuracy == "correct") // if the tags are correct
         {
-            for(int i = 0; i < maxEngagement; i++)
+            for(int i = likes; i < maxEngagement; i++)
             {
                 //Debug.Log("Accuracy is correct!");
-                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 10.0f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 5.0f));
                 //Debug.Log("Added likes successfully!");
                 likes++;
                 gameManager.totalLikes++;
@@ -100,10 +104,10 @@ public class BlogPostClass : MonoBehaviour
             }
         }else if(accuracy == "incorrect") // if the tags are not correct
         {
-            for(int i = 0; i < maxEngagement; i++)
+            for(int i = dislikes; i < maxEngagement; i++)
             {
                 //Debug.Log("This is not correct (good thing)!");
-                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 10.0f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 5.0f));
                 //Debug.Log("You've been disliked.");
                 dislikes++;
                 gameManager.totalDislikes++;
