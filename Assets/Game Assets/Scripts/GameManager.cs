@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int totalLikes;
     public int totalDislikes;
     public float credibility;
+    public NavigationController navigationController; //reference to location transition
 
     [Header("Cryptid-related")]
     public int carDamage;
@@ -50,14 +51,16 @@ public class GameManager : MonoBehaviour
         credBarReference.SetCredibility(50+(totalLikes-totalDislikes));
         credibility = credBarReference.GetComponent<Slider>().value; // sets credibility to the value of the slider for this and other scripts to use
         //----------------------------- entity spawning -------------------------------------------
-        if(roadsideWoodsPhotosTaken % 3 == 0) // if photos taken is a multiple of 3
+        if(roadsideWoodsPhotosTaken % 3 == 0 && roadsideWoodsPhotosTaken > 0) // if photos taken is a multiple of 3
         {
-            //spawn the ent
+            //instnatiate the ent
+            //Debug.Log("The Ent has spawned.");
         }
-        if(tunnelEntrancePhotosTaken % 3 == 0){ // same as above
-            //spawn deer man
+        if(tunnelEntrancePhotosTaken % 3 == 0 && tunnelEntrancePhotosTaken > 0){ // same as above
+            //instantiate the deer man
+            //Debug.Log("The Deer Man has spawned.");
         }
-        if(waterfallPhotosTaken % 3 == 0){ // same as above
+        if(waterfallPhotosTaken % 3 == 0 && waterfallPhotosTaken > 0){ // same as above
             // spawn nothing, but here just in case
         }
         //--------------------------- end conditions ----------------------------------------------

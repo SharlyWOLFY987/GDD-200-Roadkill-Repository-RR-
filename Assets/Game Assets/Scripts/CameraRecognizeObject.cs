@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic; // here for list use
+using Unity.ProjectAuditor.Editor;
+
 //using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -27,9 +29,10 @@ public class CameraRecognizeObjects : MonoBehaviour
     public float maxDistance; //how far the camera can detect objects, multiplied by 100 below
 
     [Header("Photo Taking")]
-    public GameObject gameManager; // game manager reference
-    public GameObject cameraLight;
+    public GameObject gameManager; // game manager object reference
+    private GameManager gameMangerScript; // game manager script reference
     private EvidencePhotoArray evidencePhotoArray; //in-script reference for the evidence photos
+    public GameObject cameraLight;
     public List<Texture> photoGalleryList; //the list where the player's photos are stored. List is used for flexibility (the size is variable)
     public float collectionTime;
     private bool canTakePhoto = true;
@@ -37,6 +40,7 @@ public class CameraRecognizeObjects : MonoBehaviour
     void Start()
     {
         evidencePhotoArray = gameManager.GetComponent<EvidencePhotoArray>(); // gets all of the evidence photos in the game (NOT what goes into the photo gallery)
+        gameMangerScript = gameManager.GetComponent<GameManager>();
     }
     IEnumerator RemoveEvidenceRoutine(GameObject obj)
     {
@@ -98,17 +102,16 @@ public class CameraRecognizeObjects : MonoBehaviour
                         //Debug.Log("No photo could be found."); //if no photo matches the thing (For testing)
                     }
                 }
-                /*
-                if(gameManager.locationName == tunnel){
-                    gameManager.tunnelEntrancePhotosTaken++;
+                
+                if(gameMangerScript.navigationController.currentLocation == "tunnel"){
+                    gameMangerScript.tunnelEntrancePhotosTaken++;
                 }
-                if(gameManager.locationName == woods){
-                    gameManager.roadsideWoodsPhotosTaken++;
+                if(gameMangerScript.navigationController.currentLocation == "roadside"){
+                    gameMangerScript.roadsideWoodsPhotosTaken++;
                 }
-                if(gameManager.locationName == waterfall){
-                    gameManager.waterfallPhotosTaken++;
+                if(gameMangerScript.navigationController.currentLocation == "waterfall"){
+                    gameMangerScript.waterfallPhotosTaken++;
                 }
-                */
             }
         }
         else
