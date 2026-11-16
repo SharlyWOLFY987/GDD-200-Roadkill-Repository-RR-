@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
     [Header("Cryptid-related")]
     public int carDamage;
     public bool theEntProven;
-    public bool theDeerManProven;
+    public bool theDeerManProven; 
+    public int tunnelEntrancePhotosTaken; // responsible for spawning deer man
+    public int roadsideWoodsPhotosTaken; // responsible for spawning the ent
+    public int waterfallPhotosTaken; // spawns no entity as of now
     [Header("Car Damage")]
     public GameObject carDamage1;
     public GameObject carDamage2;
@@ -46,7 +49,18 @@ public class GameManager : MonoBehaviour
     {
         credBarReference.SetCredibility(50+(totalLikes-totalDislikes));
         credibility = credBarReference.GetComponent<Slider>().value; // sets credibility to the value of the slider for this and other scripts to use
-
+        //----------------------------- entity spawning -------------------------------------------
+        if(roadsideWoodsPhotosTaken % 3 == 0) // if photos taken is a multiple of 3
+        {
+            //spawn the ent
+        }
+        if(tunnelEntrancePhotosTaken % 3 == 0){ // same as above
+            //spawn deer man
+        }
+        if(waterfallPhotosTaken % 3 == 0){ // same as above
+            // spawn nothing, but here just in case
+        }
+        //--------------------------- end conditions ----------------------------------------------
         //credibility end condition
         if(credibility < 20 && createdBlogPosts.Count > 3)
         {

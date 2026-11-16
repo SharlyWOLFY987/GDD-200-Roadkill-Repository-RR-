@@ -13,8 +13,6 @@ public class CameraRecognizeObjects : MonoBehaviour
 {
     public GameObject photoCameraArt;
     public GameObject defaultCameraArt;
-
-
     //variables
     Ray photoCameraRaycast; // this is what's used to check what object is in frame
 
@@ -79,7 +77,12 @@ public class CameraRecognizeObjects : MonoBehaviour
             //toggle 'photo is ready' UI element! (the same as the previous one with a couple of element added on)
             if (Input.GetMouseButtonDown(0) && canTakePhoto) //when left mouse is pressed
             {
-                
+                //set target cryptid angered variable to true, 
+                /*
+                if(objectHitName == ){
+                    objectHitName.GetComponent<script name>().angeredVariable = true;
+                }
+                */
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)
                 {
                     //Debug.Log(i); //puts the amount of evidence photos total into the log (for testing)
@@ -95,6 +98,17 @@ public class CameraRecognizeObjects : MonoBehaviour
                         //Debug.Log("No photo could be found."); //if no photo matches the thing (For testing)
                     }
                 }
+                /*
+                if(gameManager.locationName == tunnel){
+                    gameManager.tunnelEntrancePhotosTaken++;
+                }
+                if(gameManager.locationName == woods){
+                    gameManager.roadsideWoodsPhotosTaken++;
+                }
+                if(gameManager.locationName == waterfall){
+                    gameManager.waterfallPhotosTaken++;
+                }
+                */
             }
         }
         else
