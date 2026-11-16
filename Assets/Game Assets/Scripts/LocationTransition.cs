@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 public class LocationTransition : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LocationTransition : MonoBehaviour
 
     [Header("Destination")]
     [SerializeField] private Transform targetLocation;
+
 
     [Header("What to Know about This Script")]
     [TextArea(1, 1000)]
@@ -67,7 +69,7 @@ public class LocationTransition : MonoBehaviour
     //Temporarily set as the "K" key. Will be changed when map is created.
     private void Update()
     {
-
+       
     }
     //Used to find why location teleport didn't work
     /*private void Update()
