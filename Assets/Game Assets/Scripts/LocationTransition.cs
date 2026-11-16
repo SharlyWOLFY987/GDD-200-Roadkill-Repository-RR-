@@ -32,6 +32,13 @@ public class LocationTransition : MonoBehaviour
     [Header("Other Scripts")]
     [SerializeField] private CameraController cameraMovement;
     [SerializeField] private NewMonoBehaviourScript laptopScript;
+    [SerializeField] private PassageOfTime timer;
+
+    [Header("Time is in seconds")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string times = "Is currently set to add ";
+    public float addTime;
 
     private bool isFading = false;
     private Transform player;
@@ -88,7 +95,7 @@ public class LocationTransition : MonoBehaviour
     {
         if (!isFading)
         {
-            StartCoroutine(LeaveLaptopAndTransition());
+            StartCoroutine(FullTransition());
         }
     }
     private IEnumerator FadeAndTransition()
@@ -126,6 +133,9 @@ public class LocationTransition : MonoBehaviour
             // Update current location after successful teleport
             CurrentLocation = targetLocation;
         }
+        //Update Time
+        timer._timePassed += addTime;
+
         // Fade back in
         yield return StartCoroutine(Fade(0f));
 
@@ -196,7 +206,7 @@ public class LocationTransition : MonoBehaviour
     {
         targetLocation = destination;
     }
-    private IEnumerator LeaveLaptopAndTransition()
+    private IEnumerator FullTransition()
     {
         if (cameraMovement != null && cameraMovement.laptopFunction)
         {
