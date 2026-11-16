@@ -285,7 +285,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void LaptopFunction()
+    public void LaptopFunction()
     {
         if (isLookingAtLaptop == true)
         {
