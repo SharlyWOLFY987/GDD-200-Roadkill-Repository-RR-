@@ -25,6 +25,7 @@ public class CameraRecognizeObjects : MonoBehaviour
 
     [Header("Object Detection")]
     public LayerMask evidenceLayer; //set in Unity, this should be the layer that all evidence objects are on
+    public LayerMask cryptidLayer;
     public float maxDistance; //how far the camera can detect objects, multiplied by 100 below
 
     [Header("Photo Taking")]
