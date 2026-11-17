@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public int tunnelEntrancePhotosTaken; // responsible for spawning deer man
     public int roadsideWoodsPhotosTaken; // responsible for spawning the ent
     public int waterfallPhotosTaken; // spawns no entity as of now
+    public bool entSpawned = false;
+    public bool deerManSpawned = false;
     [Header("Car Damage")]
     public GameObject carDamage1;
     public GameObject carDamage2;
@@ -51,14 +53,16 @@ public class GameManager : MonoBehaviour
         credBarReference.SetCredibility(50+(totalLikes-totalDislikes));
         credibility = credBarReference.GetComponent<Slider>().value; // sets credibility to the value of the slider for this and other scripts to use
         //----------------------------- entity spawning -------------------------------------------
-        if(roadsideWoodsPhotosTaken % 3 == 0 && roadsideWoodsPhotosTaken > 0) // if photos taken is a multiple of 3
+        if(roadsideWoodsPhotosTaken % 3 == 0 && roadsideWoodsPhotosTaken > 0 && entSpawned == false) // if photos taken is a multiple of 3
         {
             //instnatiate the ent
-            //Debug.Log("The Ent has spawned.");
+            Debug.Log("The Ent has spawned.");
+            entSpawned = true;
         }
-        if(tunnelEntrancePhotosTaken % 3 == 0 && tunnelEntrancePhotosTaken > 0){ // same as above
+        if(tunnelEntrancePhotosTaken % 3 == 0 && tunnelEntrancePhotosTaken > 0 && deerManSpawned == false){ // same as above for deer man
             //instantiate the deer man
-            //Debug.Log("The Deer Man has spawned.");
+            Debug.Log("The Deer Man has spawned.");
+            deerManSpawned = true;
         }
         if(waterfallPhotosTaken % 3 == 0 && waterfallPhotosTaken > 0){ // same as above
             // spawn nothing, but here just in case
