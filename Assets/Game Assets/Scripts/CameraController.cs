@@ -76,9 +76,7 @@ public class CameraController : MonoBehaviour
         canUseCamera = false;
         freeLookCamera = Camera.main;
         cameraArt.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        playerLight.SetActive(false); // 
+        playerLight.SetActive(false); 
     }
 
 
