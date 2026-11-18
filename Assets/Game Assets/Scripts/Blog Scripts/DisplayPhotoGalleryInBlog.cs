@@ -10,7 +10,9 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
     [TextArea(1, 1000)]
     [Tooltip("Doesn't do anything! It needs to be here anyways")]
     public string tldr = "";
+    [Header("Actual scripting things")]
     public List<Texture> playerPhotoGallery;
+    public Texture defaultTexture;
     private List<RawImage> photoSlots; // all avaliable photo slots in the gallery
     void Start()
     {
@@ -41,9 +43,9 @@ public class DisplayPhotoGalleryInBlog : MonoBehaviour
             photoSlots[i].texture = playerPhotoGallery[i]; //sets each photo slot to a photo from the gallery
             photoSlots[i].color = new Color(255, 255, 255); //sets color to white so the image looks right
         }
-        for(int i = playerPhotoGallery.Count; i <= photoSlots.Count; i++)//this loop is responsible for updating removed photos
+        for(int i = playerPhotoGallery.Count; i < photoSlots.Count; i++)//this loop is responsible for updating removed photos
         {
-            photoSlots[i].texture = null;
+            photoSlots[i].texture = defaultTexture;
             photoSlots[i].color = new Color(18, 18, 18); // for whatever reason this color is not updating
         }
     }
