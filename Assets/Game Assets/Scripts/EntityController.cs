@@ -14,7 +14,8 @@ public class EntityController : MonoBehaviour
     public Transform lookPlayer;
 
     Vector3 targetPosition;
-    public float range;
+    public float xRange;
+    public float zRange;
     public bool isWaiting;
     public bool isLookingAtPlayer;
     public GameObject entityTest;
@@ -35,7 +36,7 @@ public class EntityController : MonoBehaviour
     //creates a new vector for the entity to move towards
     void setNewTarget()
     {
-        Vector3 RandomPosition = new Vector3(Random.Range(-range, range), 0f, Random.Range(-range, range));
+        Vector3 RandomPosition = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, -2));
         targetPosition = transform.position + RandomPosition;
     }
 
