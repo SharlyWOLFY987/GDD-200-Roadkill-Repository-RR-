@@ -18,18 +18,25 @@ public class NavigationController : MonoBehaviour
     [Header("Other Scripts")]
     public LocationTransition locationTransition;
 
+    public string currentLocation = "roadside";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         roadsideButton.onClick.AddListener(() => SetDestination(roadside));
+        roadsideButton.onClick.AddListener(() => currentLocation = "roadside");
+
         waterfallButton.onClick.AddListener(() => SetDestination(waterfall));
+        waterfallButton.onClick.AddListener(() => currentLocation = "waterfall");
+
         tunnelButton.onClick.AddListener(() => SetDestination(tunnel));
+        tunnelButton.onClick.AddListener(() => currentLocation = "tunnel");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
     private void SetDestination(Transform destination)
     {

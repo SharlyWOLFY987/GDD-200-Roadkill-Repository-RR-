@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic; // here for list use
+using Unity.ProjectAuditor.Editor;
+
 //using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 //using UnityEngine.UI; //technically not neccesary as of now, but here in case I need to change how the Photos are stored in the Photo Gallery
 
 
@@ -12,8 +15,6 @@ public class CameraRecognizeObjects : MonoBehaviour
 {
     public GameObject photoCameraArt;
     public GameObject defaultCameraArt;
-
-
     //variables
     Ray photoCameraRaycast; // this is what's used to check what object is in frame
 
@@ -24,11 +25,14 @@ public class CameraRecognizeObjects : MonoBehaviour
 
     [Header("Object Detection")]
     public LayerMask evidenceLayer; //set in Unity, this should be the layer that all evidence objects are on
+    public LayerMask cryptidLayer;
     public float maxDistance; //how far the camera can detect objects, multiplied by 100 below
 
     [Header("Photo Taking")]
-    public GameObject gameManager; // game manager reference
+    public GameObject gameManager; // game manager object reference
+    private GameManager gameMangerScript; // game manager script reference
     private EvidencePhotoArray evidencePhotoArray; //in-script reference for the evidence photos
+    public GameObject cameraLight;
     public List<Texture> photoGalleryList; //the list where the player's photos are stored. List is used for flexibility (the size is variable)
     public float collectionTime;
     private bool canTakePhoto = true;
@@ -36,6 +40,7 @@ public class CameraRecognizeObjects : MonoBehaviour
     void Start()
     {
         evidencePhotoArray = gameManager.GetComponent<EvidencePhotoArray>(); // gets all of the evidence photos in the game (NOT what goes into the photo gallery)
+        gameMangerScript = gameManager.GetComponent<GameManager>();
     }
     IEnumerator RemoveEvidenceRoutine(GameObject obj)
     {
@@ -45,8 +50,21 @@ public class CameraRecognizeObjects : MonoBehaviour
         yield return new WaitForSeconds(collectionTime); //wait for collectionTime seconds, then disable the object
         obj.SetActive(false);
         canTakePhoto = true;
-        Debug.Log("Removed "+ obj.name +"!");
+        //Debug.Log("Removed "+ obj.name +"!");
 
+    }
+    IEnumerator TakeFlashPhoto(GameObject light)
+    {
+        Light2D lightThing = light.GetComponent<Light2D>();
+        //light.GetComponent<Light2D>().intensity = 1.0f;
+        lightThing.intensity = 2.0f;
+        lightThing.pointLightOuterRadius = 0.8f;
+        lightThing.pointLightInnerRadius = 0.6f;
+        yield return new WaitForSeconds(0.1f);
+        //light.GetComponent<Light2D>().intensity = 0.45f;
+        lightThing.intensity = 0.45f;
+        lightThing.pointLightOuterRadius = 0.4f;
+        lightThing.pointLightInnerRadius = 0.1f;
     }
 
     // Update is called once per frame
@@ -63,7 +81,12 @@ public class CameraRecognizeObjects : MonoBehaviour
             //toggle 'photo is ready' UI element! (the same as the previous one with a couple of element added on)
             if (Input.GetMouseButtonDown(0) && canTakePhoto) //when left mouse is pressed
             {
-                
+                //set target cryptid angered variable to true, 
+                /*
+                if(objectHitName == ){
+                    objectHitName.GetComponent<script name>().angeredVariable = true;
+                }
+                */
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)
                 {
                     //Debug.Log(i); //puts the amount of evidence photos total into the log (for testing)
@@ -71,12 +94,23 @@ public class CameraRecognizeObjects : MonoBehaviour
                     if(objectHitName == evidencePhotoArray.evidenceImages[i].name){
                         photoGalleryList.Add(evidencePhotoArray.evidenceImages[i]);
                         //Debug.Log("Added " + evidencePhotoArray.evidenceImages[i].name + " photo to camera!");//add the photo to camera here! (This is for testing)
-                        StartCoroutine(RemoveEvidenceRoutine(hit.collider.gameObject));// toggles the game object off a few seconds after taking the picture
-                        //hit.collider.gameObject.SetActive(false); // replaced with coroutine
+                        StartCoroutine(TakeFlashPhoto(cameraLight));
+                        //StartCoroutine(RemoveEvidenceRoutine(hit.collider.gameObject));// toggles the game object off a few seconds after taking the picture
+                        hit.collider.gameObject.layer = 0; // layer 0 is the default layer. prevents a photo of the same object being taken twice
                     }
                     else{
                         //Debug.Log("No photo could be found."); //if no photo matches the thing (For testing)
                     }
+                }
+                
+                if(gameMangerScript.navigationController.currentLocation == "tunnel"){
+                    gameMangerScript.tunnelEntrancePhotosTaken++;
+                }
+                if(gameMangerScript.navigationController.currentLocation == "roadside"){
+                    gameMangerScript.roadsideWoodsPhotosTaken++;
+                }
+                if(gameMangerScript.navigationController.currentLocation == "waterfall"){
+                    gameMangerScript.waterfallPhotosTaken++;
                 }
             }
         }

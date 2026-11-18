@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 public class LocationTransition : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LocationTransition : MonoBehaviour
 
     [Header("Destination")]
     [SerializeField] private Transform targetLocation;
+
 
     [Header("What to Know about This Script")]
     [TextArea(1, 1000)]
@@ -32,7 +34,14 @@ public class LocationTransition : MonoBehaviour
     [Header("Other Scripts")]
     [SerializeField] private CameraController cameraMovement;
     [SerializeField] private NewMonoBehaviourScript laptopScript;
+   // [SerializeField] private PassageOfTime timer;
 
+    /*[Header("Time is in seconds")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string times = "Is currently set to add ";
+    public float addTime;
+    */
     private bool isFading = false;
     private Transform player;
 
@@ -60,7 +69,7 @@ public class LocationTransition : MonoBehaviour
     //Temporarily set as the "K" key. Will be changed when map is created.
     private void Update()
     {
-
+       
     }
     //Used to find why location teleport didn't work
     /*private void Update()
@@ -88,7 +97,7 @@ public class LocationTransition : MonoBehaviour
     {
         if (!isFading)
         {
-            StartCoroutine(LeaveLaptopAndTransition());
+            StartCoroutine(FullTransition());
         }
     }
     private IEnumerator FadeAndTransition()
@@ -126,6 +135,9 @@ public class LocationTransition : MonoBehaviour
             // Update current location after successful teleport
             CurrentLocation = targetLocation;
         }
+        //Update Time
+        //timer._timePassed += addTime;
+
         // Fade back in
         yield return StartCoroutine(Fade(0f));
 
@@ -196,7 +208,7 @@ public class LocationTransition : MonoBehaviour
     {
         targetLocation = destination;
     }
-    private IEnumerator LeaveLaptopAndTransition()
+    private IEnumerator FullTransition()
     {
         if (cameraMovement != null && cameraMovement.laptopFunction)
         {
