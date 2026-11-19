@@ -9,6 +9,7 @@ public class CarHorn : MonoBehaviour
     public GameObject leftLight;
     public GameObject rightLight;
     public float headlightBrightnessDifference;
+    public ScreenShake screenShake; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,11 +31,14 @@ public class CarHorn : MonoBehaviour
         {
             leftLight2D.intensity += headlightBrightnessDifference;
             rightLight2D.intensity += headlightBrightnessDifference;
+            //StartCoroutine(screenShake.Shaking());
+            screenShake.start = true;
         }
         if (Keyboard.current.spaceKey.wasReleasedThisFrame)
         {
             leftLight2D.intensity -= headlightBrightnessDifference;
             rightLight2D.intensity -= headlightBrightnessDifference;
+            screenShake.start = false;
         }
         Debug.Log(isHonking);
     }
