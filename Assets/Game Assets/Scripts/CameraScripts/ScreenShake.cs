@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
 {
+    [Header("What to Know about This Script")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string tldr = "";
+
+    
     public float shakeDuration;
     public AnimationCurve curve;
     public bool start = false; // this is purely for testing

@@ -4,6 +4,12 @@ using UnityEngine.Rendering.Universal;
 
 public class CarHorn : MonoBehaviour
 {
+    [Header("What to Know about This Script")]
+    [TextArea(1, 1000)]
+    [Tooltip("Doesn't do anything! It needs to be here anyways")]
+    public string tldr = "";
+
+    
     [Header("Honking")]
     public bool isHonking = false;
     public GameObject leftLight;
