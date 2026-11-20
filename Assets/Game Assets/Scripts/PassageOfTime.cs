@@ -9,7 +9,7 @@ public class PassageOfTime : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 
-    private float _timePassed = 0;
+    public float _timePassed = 0;
     public float _gameTimeInMinutes = 15;
 
 
