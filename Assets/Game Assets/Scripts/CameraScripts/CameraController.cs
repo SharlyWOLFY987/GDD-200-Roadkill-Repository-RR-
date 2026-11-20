@@ -355,7 +355,7 @@ public class CameraController : MonoBehaviour
                 cameraArt.SetActive(false);
                 getAxis = false;
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
-                if (horizontalRotation == 0f && verticalRotation == 0f)
+                if (horizontalRotation == 0f && verticalRotation == 0f && freeLookCamera.fieldOfView == zoomOutFov)
                 {
                     zoomOutFunction = false;
                     isZoomingIn = false;
