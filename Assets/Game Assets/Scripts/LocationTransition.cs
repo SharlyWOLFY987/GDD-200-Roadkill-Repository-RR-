@@ -39,7 +39,7 @@ public class LocationTransition : MonoBehaviour
     [Header("Time is in seconds")]
     [TextArea(1, 1000)]
     [Tooltip("Doesn't do anything! It needs to be here anyways")]
-    public string times = "Is currently set to add ";
+    public string times = "Is currently set to add 15 minutes in game";
     public float addTime = 37.5f;
     
     private bool isFading = false;
