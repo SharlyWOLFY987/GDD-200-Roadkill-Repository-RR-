@@ -28,7 +28,6 @@ public class PassageOfTime : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         float _currentTime = setInGameTime() * _timePassed + 36000;
-        Debug.Log(_currentTime);
         float minutes = getMinutes(_currentTime);
         float hours = getHours(_currentTime);
         string clockText = string.Format("{0:00}:{1:00}", hours, minutes);

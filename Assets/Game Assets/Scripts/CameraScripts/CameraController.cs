@@ -76,9 +76,7 @@ public class CameraController : MonoBehaviour
         canUseCamera = false;
         freeLookCamera = Camera.main;
         cameraArt.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        playerLight.SetActive(false); // 
+        playerLight.SetActive(false); 
     }
 
 
@@ -357,7 +355,7 @@ public class CameraController : MonoBehaviour
                 cameraArt.SetActive(false);
                 getAxis = false;
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);
-                if (freeLookCamera.fieldOfView == zoomOutFov)
+                if (horizontalRotation == 0f && verticalRotation == 0f)
                 {
                     zoomOutFunction = false;
                     isZoomingIn = false;
