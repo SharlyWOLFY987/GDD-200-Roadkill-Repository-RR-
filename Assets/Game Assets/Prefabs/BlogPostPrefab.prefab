@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 1925819985896042037}
   - component: {fileID: 6900584950142492913}
   m_Layer: 5
-  m_Name: Comment1
+  m_Name: verComment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,23 +747,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28147ff0ddb11ed489ccca3efab4701a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PostComment
-  comment1: {fileID: 6900584950142492913}
+  verComment: {fileID: 6900584950142492913}
   comment2: {fileID: 7854798362172162074}
   comment3: {fileID: 4407138569110981001}
-  username1: {fileID: 8269717816014387709}
+  verUsername: {fileID: 8269717816014387709}
   username2: {fileID: 5079872203274259505}
   username3: {fileID: 8901065041107769994}
   usernames:
-  - PaigeArtist56
-  - CharlieMcDuck
-  - OvertheBenjies
-  - Hershal'sChocolate
   - Mikeydude()
   - I'mNotaReference:(
-  - MattisFantastic^^
-  - SharkFan23
-  - AdrainANDNoir:)
-  - ChrisISBACK!2$
   - RedisSUSuuu
   - SpicyNugget&&
   - CorpseFan^^
@@ -779,6 +771,17 @@ MonoBehaviour:
   - DreadSpot&^
   - IlikePork23
   - OrangeHat7^%
+  verUsernames:
+  - PaigeArtist56
+  - CharlieMcDuck
+  - OvertheBenjies
+  - Hershal'sChocolate
+  - Calilovesharks
+  - ChuckChuck00
+  - MattisFantastic^^
+  - SharkFan23
+  - AdrainANDNoir:)
+  - ChrisISBACK!2$
   correctComments:
   - That's so cool!
   - Great picture
@@ -793,6 +796,28 @@ MonoBehaviour:
   - Did you mean to tag it like that?
   - Is this a serious post?
   - What is that even supposed to be??
+  deermanCorrect:
+  - I've seen similar things from the Deer Man! Keep looking for more deer-like evidence.
+  - Looks like some good Deer Man evidence! Try finding more like that.
+  - You're right, that's definetly the Deer Man.
+  deermanIncorrect:
+  - That doesn't seem quite right, I've seen similar evidence for the Deer Man instead.
+  - This looks more like it belongs to the Deer Man
+  entCorrect:
+  - I've seen similar things from the Ent! Keep looking for more tree-like evidence.
+  - Looks like some good Ent evidence! Try finding more like this.
+  - You're right, that's definetly the Ent.
+  entIncorrect:
+  - That doesn't seem quite right, I've seen similar evidence for the Ent instead.
+  - This looks more like it belongs to the Ent
+  roadkillCorrect:
+  - This is definetly a strange picture, try finding some more like this.
+  - I've never seen anything like this, do we have a new creature?
+  - This doesn't fit any of the known creatures from this area, keeping looking for
+    more like that.
+  - This is new, I wonder if we've missed a creature.
+  roadkillIncorrect:
+  - I don't know what that is but it seems like something important
 --- !u!1 &2628944952321108142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1845,7 @@ GameObject:
   - component: {fileID: 7287654424340506396}
   - component: {fileID: 8269717816014387709}
   m_Layer: 5
-  m_Name: Username1
+  m_Name: verUsername
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
