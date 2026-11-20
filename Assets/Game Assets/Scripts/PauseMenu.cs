@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -45,7 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        Debug.Log("Loading menu...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
    
 }

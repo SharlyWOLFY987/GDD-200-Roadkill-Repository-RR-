@@ -51,18 +51,18 @@ public class GameManager : MonoBehaviour
         if(credibility < 20 && createdBlogPosts.Count > 3)
         {
             //end the game
-            Debug.Log("You've been banned!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
 
         //car damage end condition
         if(carDamage >= 3)
         {
-            //end the game with car damage end screen
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         }
         
         if(credibility > 80 && theDeerManProven && theEntProven)
         {
-            //win the game!
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         }
     }
 }
