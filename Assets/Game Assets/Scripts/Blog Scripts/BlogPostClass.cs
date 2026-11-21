@@ -44,6 +44,7 @@ public class BlogPostClass : MonoBehaviour
         // title and tags 
         thisPostTitle = createBlogPost.cryptidTag + " evidence!"; // sets the title to the tag
         thisCryptidTag = createBlogPost.cryptidTag;
+        Debug.Log("Cryptid tag from CreateBlogPost: [" + thisCryptidTag + "]");
 
         //photo
         evidencePhoto = createBlogPost.postImage;
@@ -72,12 +73,12 @@ public class BlogPostClass : MonoBehaviour
         if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is correctly tagged!");
-            postComment.ShowComment(true); // - Alana
+            postComment.ShowComment(true, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("correct"));
         }else if(!String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is incorrectly tagged!");
-            postComment.ShowComment(false); // - Alana
+            postComment.ShowComment(false, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
     }

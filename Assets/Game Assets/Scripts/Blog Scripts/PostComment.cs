@@ -119,10 +119,16 @@ public class PostComment : MonoBehaviour
         "I don't know what that is but it seems like something important",
     };
 
+    public string[] fakeEvidence =
+    {
+        "This doesn't seem like anything that needs to be posted.",
+        "Just looks like a normal picture, not everything needs to be posted!"
+    };
+
     //sets the comments in unity to the correct typing
     //TODO: get the incorrect and corrects working properly!
 
-    public void ShowComment(bool isCorrect)
+    public void ShowComment(bool isCorrect, string cryptid)
     {
         if (commentsGenerated)
         {
@@ -131,7 +137,51 @@ public class PostComment : MonoBehaviour
 
         commentsGenerated = true;
 
+        string cryptidName = cryptid.Trim().Replace(" ", "");
+
+        Debug.Log("Actual creature in photo: [" + cryptidName + "]");
+
         string[] comments;
+        string[] verifiedComments;
+
+        if (cryptidName.Equals("DeerMan", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = deermanCorrect;
+            }
+            else
+            {
+                verifiedComments = deermanIncorrect;
+            }
+        }
+        else if (cryptidName.Equals("TheEnt", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = entCorrect;
+            }
+            else
+            {
+                verifiedComments = entIncorrect;
+            }
+        }
+        else if (cryptidName.Equals("Roadkill", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = roadkillCorrect;
+            }
+            else
+            {
+                verifiedComments = roadkillIncorrect;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Unknown cryptid name: " + cryptid);
+            verifiedComments = fakeEvidence;
+        }
 
         if (isCorrect)
         {
@@ -148,6 +198,7 @@ public class PostComment : MonoBehaviour
 
         //comment1.text = GetRandomComment(availableComments);
         //verComment.text = GetRandomVerComment();
+        verComment.text = GetRandomComment(new List<string>(verifiedComments));
         comment2.text = GetRandomComment(availableComments);
         comment3.text = GetRandomComment(availableComments);
 
