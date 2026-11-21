@@ -11,9 +11,11 @@ public class PostImageSelection : MonoBehaviour
 
     public int photoIndex = 0; // used to track what photo the player is selecting
     public List<Texture> playerPhotoGallery;
+    public Texture emptyPhoto;
     [Header("Button References")]
     public Button nextPhotoButton;
     public Button previousPhotoButton;
+    public Button createPostButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +45,7 @@ public class PostImageSelection : MonoBehaviour
 
         if(playerPhotoGallery.Count != 0)
         {
+            createPostButton.interactable = true;
             if(photoIndex == 0)
             {
                 previousPhotoButton.interactable = false; //keeps the button visible but not usable
@@ -64,10 +67,11 @@ public class PostImageSelection : MonoBehaviour
         else // if the photo gallery is empty
         {
             //removes image in photo gallery if empty and resets the color
-            GetComponent<RawImage>().texture = default;
-            GetComponent<RawImage>().color = new Color(50, 56, 67);
+            GetComponent<RawImage>().texture = emptyPhoto;
+            GetComponent<RawImage>().color = new Color(255, 255, 255);
             previousPhotoButton.interactable = false;
             nextPhotoButton.interactable = false;
+            createPostButton.interactable = false;
         }
     }
         
