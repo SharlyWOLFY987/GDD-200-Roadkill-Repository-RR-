@@ -749,23 +749,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28147ff0ddb11ed489ccca3efab4701a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PostComment
-  comment1: {fileID: 6900584950142492913}
+  verComment: {fileID: 0}
   comment2: {fileID: 7854798362172162074}
   comment3: {fileID: 4407138569110981001}
-  username1: {fileID: 8269717816014387709}
+  verUsername: {fileID: 0}
   username2: {fileID: 5079872203274259505}
   username3: {fileID: 8901065041107769994}
   usernames:
-  - PaigeArtist56
-  - CharlieMcDuck
-  - OvertheBenjies
-  - Hershal'sChocolate
   - Mikeydude()
   - I'mNotaReference:(
-  - MattisFantastic^^
-  - SharkFan23
-  - AdrainANDNoir:)
-  - ChrisISBACK!2$
   - RedisSUSuuu
   - SpicyNugget&&
   - CorpseFan^^
@@ -781,6 +773,17 @@ MonoBehaviour:
   - DreadSpot&^
   - IlikePork23
   - OrangeHat7^%
+  verUsernames:
+  - PaigeArtist56
+  - CharlieMcDuck
+  - OvertheBenjies
+  - Hershal'sChocolate
+  - Calilovesharks
+  - ChuckChuck00
+  - MattisFantastic^^
+  - SharkFan23
+  - AdrainANDNoir:)
+  - ChrisISBACK!2$
   correctComments:
   - That's so cool!
   - Great picture
@@ -795,6 +798,31 @@ MonoBehaviour:
   - Did you mean to tag it like that?
   - Is this a serious post?
   - What is that even supposed to be??
+  deermanCorrect:
+  - I've seen similar things from the Deer Man! Keep looking for more deer-like evidence.
+  - Looks like some good Deer Man evidence! Try finding more like that.
+  - You're right, that's definetly the Deer Man.
+  deermanIncorrect:
+  - That doesn't seem quite right, I've seen similar evidence for the Deer Man instead.
+  - This looks more like it belongs to the Deer Man
+  entCorrect:
+  - I've seen similar things from the Ent! Keep looking for more tree-like evidence.
+  - Looks like some good Ent evidence! Try finding more like this.
+  - You're right, that's definetly the Ent.
+  entIncorrect:
+  - That doesn't seem quite right, I've seen similar evidence for the Ent instead.
+  - This looks more like it belongs to the Ent
+  roadkillCorrect:
+  - This is definetly a strange picture, try finding some more like this.
+  - I've never seen anything like this, do we have a new creature?
+  - This doesn't fit any of the known creatures from this area, keeping looking for
+    more like that.
+  - This is new, I wonder if we've missed a creature.
+  roadkillIncorrect:
+  - I don't know what that is but it seems like something important
+  fakeEvidence:
+  - This doesn't seem like anything that needs to be posted.
+  - Just looks like a normal picture, not everything needs to be posted!
 --- !u!1 &2578010923257975970
 GameObject:
   m_ObjectHideFlags: 0
