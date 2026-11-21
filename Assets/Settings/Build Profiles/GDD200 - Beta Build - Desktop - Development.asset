@@ -66,11 +66,14 @@ MonoBehaviour:
     m_path: Assets/Scenes/Beta Scene/MainMenu.unity
     m_guid: 812bb9cb4c4dba04c91b696a72d29b3d
   - m_enabled: 1
-    m_path: Assets/Scenes/Beta Scene/Beta Scenes.unity
-    m_guid: 1274d97a49692e84da85ac170f849d95
+    m_path: Assets/Scenes/ChuckScenes/CharlieEwing.unity
+    m_guid: 4541f31cb3f878442ad134efd39b5d3a
   - m_enabled: 1
     m_path: Assets/Scenes/Beta Scene/Ending Screen.unity
     m_guid: f264145902facef4b95497834685bc3e
+  - m_enabled: 0
+    m_path: Assets/Scenes/Beta Scene/Beta Scenes.unity
+    m_guid: 1274d97a49692e84da85ac170f849d95
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

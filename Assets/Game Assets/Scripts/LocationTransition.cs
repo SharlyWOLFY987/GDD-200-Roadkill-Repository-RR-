@@ -34,14 +34,14 @@ public class LocationTransition : MonoBehaviour
     [Header("Other Scripts")]
     [SerializeField] private CameraController cameraMovement;
     [SerializeField] private NewMonoBehaviourScript laptopScript;
-   // [SerializeField] private PassageOfTime timer;
+    [SerializeField] private PassageOfTime timer;
 
-    /*[Header("Time is in seconds")]
+    [Header("Time is in seconds")]
     [TextArea(1, 1000)]
     [Tooltip("Doesn't do anything! It needs to be here anyways")]
-    public string times = "Is currently set to add ";
-    public float addTime;
-    */
+    public string times = "Is currently set to add 15 minutes in game";
+    public float addTime = 37.5f;
+    
     private bool isFading = false;
     private Transform player;
 
@@ -136,7 +136,7 @@ public class LocationTransition : MonoBehaviour
             CurrentLocation = targetLocation;
         }
         //Update Time
-        //timer._timePassed += addTime;
+        timer._timePassed += addTime;
 
         // Fade back in
         yield return StartCoroutine(Fade(0f));

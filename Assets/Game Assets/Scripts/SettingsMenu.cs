@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
 
-    public DemoCameraMovement demoCameraMovement;
+    public CameraController CameraController;
+    public Slider sensitivitySlider;
 
     public void setSensitivity()
     {
-        Debug.Log(demoCameraMovement.cameraRotationSpeed);
+        CameraController.cameraRotationSpeed = sensitivitySlider.value;
     }
 
 }
