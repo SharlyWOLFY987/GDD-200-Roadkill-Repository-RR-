@@ -52,7 +52,11 @@ public class EntityController : MonoBehaviour
         lookingAtPlayer();
     }
 
-
+    void OnEnable()
+    {
+        isTriggered = false; // this is here to prevent instant aggression 
+        gameObject.layer = 6; // 6 is the evidence object layer
+    }
 
     void EntityMovement()
     {
@@ -134,6 +138,7 @@ public class EntityController : MonoBehaviour
         if (isTriggered) // - Chuck: if the player takes ANY photo while it's spawned in
         {
             isLookingAtPlayer = !isLookingAtPlayer;
+            gameObject.name = "DeerMan_Real_Attacking";
         }
         if (isLookingAtPlayer)
         {
