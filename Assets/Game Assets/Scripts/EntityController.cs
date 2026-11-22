@@ -33,6 +33,11 @@ public class EntityController : MonoBehaviour
     public bool moveToLocationTwo;
     public bool moveToLocationThree;
 
+    [Header("Behaviors")]
+    public bool isTriggered;
+    public bool isFleeing;
+    public GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -126,7 +131,7 @@ public class EntityController : MonoBehaviour
     // function for object rotating towards the player
     void lookingAtPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (isTriggered) // - Chuck: if the player takes ANY photo while it's spawned in
         {
             isLookingAtPlayer = !isLookingAtPlayer;
         }
@@ -158,7 +163,8 @@ public class EntityController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerCollide"))
         {
-            entityTest.SetActive(true);
+            //entityTest.SetActive(true);
+            gameManager.carDamage++;
         }
     }
 

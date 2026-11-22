@@ -35,6 +35,9 @@ public class CameraRecognizeObjects : MonoBehaviour
     public List<Texture> photoGalleryList; //the list where the player's photos are stored. List is used for flexibility (the size is variable)
     public float collectionTime;
     private bool canTakePhoto = true;
+
+    [Header("Cryptids")]
+    public GameObject deerMan;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -81,11 +84,7 @@ public class CameraRecognizeObjects : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canTakePhoto) //when left mouse is pressed
             {
                 //set target cryptid angered variable to true, 
-                /*
-                if(objectHitName == ){
-                    objectHitName.GetComponent<script name>().angeredVariable = true;
-                }
-                */
+                deerMan.GetComponent<EntityController>().isTriggered = true;
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)
                 {
                     //Debug.Log(i); //puts the amount of evidence photos total into the log (for testing)
