@@ -749,10 +749,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28147ff0ddb11ed489ccca3efab4701a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PostComment
-  verComment: {fileID: 0}
+  verComment: {fileID: 6900584950142492913}
   comment2: {fileID: 7854798362172162074}
   comment3: {fileID: 4407138569110981001}
-  verUsername: {fileID: 0}
+  verUsername: {fileID: 8269717816014387709}
   username2: {fileID: 5079872203274259505}
   username3: {fileID: 8901065041107769994}
   usernames:
