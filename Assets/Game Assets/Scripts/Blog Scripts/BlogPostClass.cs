@@ -66,10 +66,18 @@ public class BlogPostClass : MonoBehaviour
         //gets the name of the entity in the selected image
         String[] parts = evidencePhoto.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
+        String cryptidProven = parts[1].Replace(" ", ""); // this should say "real" or "cryptid" or something
         entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
+        //Debug.Log(entityInPhoto);
+        Debug.Log(postTagForComparison);
         //compares the entity in the photo with the tag the post has
-        if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
+        if(String.Equals(entityInPhoto, "Roadkill\n", StringComparison.Ordinal) && postTagForComparison == "Unknown\n")
+        {
+            Debug.Log("Roadkill time!");
+            StartCoroutine(EvaluatePostAccuracy("roadkill"));
+        }
+        else if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
             Debug.Log("Post is correctly tagged!");
             postComment.ShowComment(true); // - Alana
@@ -80,6 +88,7 @@ public class BlogPostClass : MonoBehaviour
             postComment.ShowComment(false); // - Alana
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
+        
     }
     public void DisplayPost() // updates all the parts that need to be updated
     {
@@ -115,7 +124,13 @@ public class BlogPostClass : MonoBehaviour
             }
         }else if(accuracy == "roadkill")
         {
-            
+            maxEngagement/=2; // reduced max engagement because you're guarenteed to get likes for this
+            for(int i = likes; i < maxEngagement; i++) 
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 2.0f));
+                likes++;
+                gameManager.totalLikes++;
+            }
         }
     }
     // Update is called once per frame

@@ -46,6 +46,6 @@ public class CarHorn : MonoBehaviour
             rightLight2D.intensity -= headlightBrightnessDifference;
             screenShake.start = false;
         }
-        Debug.Log(isHonking);
+        //Debug.Log(isHonking);
     }
 }

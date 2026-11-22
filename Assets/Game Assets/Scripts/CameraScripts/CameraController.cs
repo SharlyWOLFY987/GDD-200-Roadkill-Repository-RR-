@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
-    private float transformSpeed = 5f;
+    private float transformSpeed = 6.5f; // - Chuck, adjusted this a little bit so it's faster
     private float laptopRotationSpeed = 150f;
 
 
