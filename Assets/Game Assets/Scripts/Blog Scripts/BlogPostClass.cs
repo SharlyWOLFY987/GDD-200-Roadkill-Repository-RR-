@@ -51,7 +51,7 @@ public class BlogPostClass : MonoBehaviour
 
         postComment = GetComponent<PostComment>(); // - Alana
 
-        maxEngagement = UnityEngine.Random.Range(20, 40);
+        maxEngagement = UnityEngine.Random.Range(15, 25);
         
         DisplayPost();
 
@@ -71,21 +71,22 @@ public class BlogPostClass : MonoBehaviour
         entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
         //Debug.Log(entityInPhoto);
-        Debug.Log(postTagForComparison);
+        //sDebug.Log(postTagForComparison);
         //compares the entity in the photo with the tag the post has
         if(String.Equals(entityInPhoto, "Roadkill\n", StringComparison.Ordinal) && postTagForComparison == "Unknown\n")
         {
-            Debug.Log("Roadkill time!");
+            //Debug.Log("Roadkill time!");
+            maxEngagement/=2; // reduced max engagement because you're guarenteed to get likes for this
             StartCoroutine(EvaluatePostAccuracy("roadkill"));
         }
         else if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
-            Debug.Log("Post is correctly tagged!");
+            //Debug.Log("Post is correctly tagged!");
             postComment.ShowComment(true, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("correct"));
         }else if(!String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
-            Debug.Log("Post is incorrectly tagged!");
+            //Debug.Log("Post is incorrectly tagged!");
             postComment.ShowComment(false, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
@@ -125,7 +126,6 @@ public class BlogPostClass : MonoBehaviour
             }
         }else if(accuracy == "roadkill")
         {
-            maxEngagement/=2; // reduced max engagement because you're guarenteed to get likes for this
             for(int i = likes; i < maxEngagement; i++) 
             {
                 yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 2.0f));
