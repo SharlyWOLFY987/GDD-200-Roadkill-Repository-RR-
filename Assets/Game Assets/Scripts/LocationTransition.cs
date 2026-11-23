@@ -46,6 +46,8 @@ public class LocationTransition : MonoBehaviour
     private Transform player;
 
     public Transform CurrentLocation { get; private set; }
+    [Header("Headlights")]
+    public GameObject headlightParent;
 
     private void Start()
     {
@@ -220,6 +222,7 @@ public class LocationTransition : MonoBehaviour
 
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                headlightParent.SetActive(true); // -Chuck, this line needs to be here so the headlights turn on as soon as you start exiting the laptop
             }
 
             // Tell camera to leave laptop view
