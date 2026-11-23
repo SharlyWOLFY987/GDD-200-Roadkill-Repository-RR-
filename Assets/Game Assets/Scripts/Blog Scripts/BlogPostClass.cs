@@ -76,7 +76,7 @@ public class BlogPostClass : MonoBehaviour
         if(String.Equals(entityInPhoto, "Roadkill\n", StringComparison.Ordinal) && postTagForComparison == "Unknown\n")
         {
             //Debug.Log("Roadkill time!");
-            maxEngagement/=2; // reduced max engagement because you're guarenteed to get likes for this
+            //maxEngagement/=2; // testing line
             StartCoroutine(EvaluatePostAccuracy("roadkill"));
         }
         else if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
