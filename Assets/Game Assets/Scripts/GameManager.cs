@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
         //--------------------------- end conditions ----------------------------------------------
         //credibility end condition
-        if(credibility < 20 && createdBlogPosts.Count > 3)
+        if(credibility < 20 && createdBlogPosts.Count >= 3)
         {
             //end the game
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         }
         
+        // win condition!
         if(credibility > 80 && theDeerManProven && theEntProven)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
