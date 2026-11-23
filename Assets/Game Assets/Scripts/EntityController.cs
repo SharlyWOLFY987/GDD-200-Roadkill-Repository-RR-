@@ -37,6 +37,7 @@ public class EntityController : MonoBehaviour
     public bool isTriggered;
     public bool isFleeing;
     public GameManager gameManager;
+    public bool isTakingDamage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,6 +52,8 @@ public class EntityController : MonoBehaviour
         EntityMovement();
         lookingAtPlayer();
     }
+
+   
 
     void OnEnable()
     {
@@ -137,7 +140,7 @@ public class EntityController : MonoBehaviour
     {
         if (isTriggered) // - Chuck: if the player takes ANY photo while it's spawned in
         {
-            isLookingAtPlayer = !isLookingAtPlayer;
+            isLookingAtPlayer = true;
             gameObject.name = "DeerMan_Real_Attacking";
         }
         if (isLookingAtPlayer)
@@ -150,6 +153,8 @@ public class EntityController : MonoBehaviour
 
             // moves the entity towards the player
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveToPlayerSpeed * Time.deltaTime);
+
+        
             //calculates the direction between the current position and the position of the player.
             Vector3 lookDirection = lookPlayer.position - transform.position;
 
@@ -162,21 +167,30 @@ public class EntityController : MonoBehaviour
         }
     }
 
-
+    
     // checks if entity has entered a collider
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerCollide"))
         {
-            //entityTest.SetActive(true);
-            gameManager.carDamage++;
+            StartCoroutine(entityMoveAwayRoutine());
+   
         }
     }
+    
 
     IEnumerator moveRoutine()
     {
         isMoving = false;
         yield return new WaitForSeconds(5);
         isMoving = true;
+    }
+
+    IEnumerator entityMoveAwayRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        gameManager.carDamage++;
+        isTriggered = false;
+        isLookingAtPlayer = false;
     }
 }
