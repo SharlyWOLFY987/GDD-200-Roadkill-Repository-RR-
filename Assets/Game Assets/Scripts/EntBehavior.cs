@@ -42,6 +42,7 @@ public class EntBehavior : MonoBehaviour
 
     //Window Damage
     [SerializeField] private GameManager gameManager;
+    private bool hasRan;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,6 +64,7 @@ public class EntBehavior : MonoBehaviour
         {
             DespawnEnt();
             hasDespawned = true;
+            hasRan = false;
         }
 
         if (Nav.currentLocation == "roadside")
@@ -173,7 +175,13 @@ public class EntBehavior : MonoBehaviour
                 // calculates the roatation of the entity and the player.
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirection), lookRotationSpeed * Time.deltaTime);
             }
-            StartCoroutine(Attack());
+            if (!hasRan )
+            {
+                // Code to run only once
+                StartCoroutine(Attack());
+
+                hasRan = true; // Mark as run so it won't run again
+            }
         }
     }
 
@@ -227,5 +235,6 @@ public class EntBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds (5f);
         gameManager.carDamage++;
+
     }
 }
