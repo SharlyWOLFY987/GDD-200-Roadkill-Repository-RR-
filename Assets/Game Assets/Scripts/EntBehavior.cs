@@ -12,6 +12,7 @@ public class EntBehavior : MonoBehaviour
     public float rotationSpeed;
     //transform that entity moves towards 
     public Transform Player;
+    public bool isTrigger;
 
     //transform that entity rotate towards 
     public Transform lookPlayer;
@@ -39,6 +40,8 @@ public class EntBehavior : MonoBehaviour
     [SerializeField] private NavigationController Nav;
     private bool hasDespawned = false;
 
+    //Window Damage
+    [SerializeField] private GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -147,7 +150,7 @@ public class EntBehavior : MonoBehaviour
     // function for object rotating towards the player
     void lookingAtPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (isTrigger == true)
         {
             isLookingAtPlayer = !isLookingAtPlayer;
         }
@@ -170,6 +173,7 @@ public class EntBehavior : MonoBehaviour
                 // calculates the roatation of the entity and the player.
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirection), lookRotationSpeed * Time.deltaTime);
             }
+            StartCoroutine(Attack());
         }
     }
 
@@ -181,12 +185,6 @@ public class EntBehavior : MonoBehaviour
             entityTest.SetActive(true);
         }
     }
-    /*checks if player is in location
-    If(current  =="roadside")
-    {
-
-    }
-    */
     IEnumerator moveRoutine()
     {
         isMoving = false;
@@ -220,5 +218,14 @@ public class EntBehavior : MonoBehaviour
         moveToLocationOne = true;
         moveToLocationTwo = false;
         moveToLocationThree = false;
+    }
+    private void OnEnable()
+    {
+        isTrigger = false;
+    }
+    public IEnumerator Attack()
+    {
+        yield return new WaitForSeconds (5f);
+        gameManager.carDamage++;
     }
 }
