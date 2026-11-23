@@ -44,13 +44,14 @@ public class BlogPostClass : MonoBehaviour
         // title and tags 
         thisPostTitle = createBlogPost.cryptidTag + " evidence!"; // sets the title to the tag
         thisCryptidTag = createBlogPost.cryptidTag;
+        Debug.Log("Cryptid tag from CreateBlogPost: [" + thisCryptidTag + "]");
 
         //photo
         evidencePhoto = createBlogPost.postImage;
 
         postComment = GetComponent<PostComment>(); // - Alana
 
-        maxEngagement = UnityEngine.Random.Range(20, 40);
+        maxEngagement = UnityEngine.Random.Range(15, 25);
         
         DisplayPost();
 
@@ -66,20 +67,30 @@ public class BlogPostClass : MonoBehaviour
         //gets the name of the entity in the selected image
         String[] parts = evidencePhoto.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
+        String cryptidProven = parts[1].Replace(" ", ""); // this should say "real" or "cryptid" or something
         entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
+        //Debug.Log(entityInPhoto);
+        //sDebug.Log(postTagForComparison);
         //compares the entity in the photo with the tag the post has
-        if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
+        if(String.Equals(entityInPhoto, "Roadkill\n", StringComparison.Ordinal) && postTagForComparison == "Unknown\n")
         {
-            Debug.Log("Post is correctly tagged!");
-            postComment.ShowComment(true); // - Alana
+            //Debug.Log("Roadkill time!");
+            //maxEngagement/=2; // testing line
+            StartCoroutine(EvaluatePostAccuracy("roadkill"));
+        }
+        else if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
+        {
+            //Debug.Log("Post is correctly tagged!");
+            postComment.ShowComment(true, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("correct"));
         }else if(!String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
-            Debug.Log("Post is incorrectly tagged!");
-            postComment.ShowComment(false); // - Alana
+            //Debug.Log("Post is incorrectly tagged!");
+            postComment.ShowComment(false, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("incorrect"));
         }
+        
     }
     public void DisplayPost() // updates all the parts that need to be updated
     {
@@ -115,7 +126,12 @@ public class BlogPostClass : MonoBehaviour
             }
         }else if(accuracy == "roadkill")
         {
-            
+            for(int i = likes; i < maxEngagement; i++) 
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 2.0f));
+                likes++;
+                gameManager.totalLikes++;
+            }
         }
     }
     // Update is called once per frame

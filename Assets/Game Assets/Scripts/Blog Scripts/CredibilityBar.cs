@@ -10,7 +10,7 @@ public class CredibilityBar : MonoBehaviour
         slider.maxValue = cred;
         slider.value = cred;
     }
-    public void SetCredibility(int cred)
+    public void SetCredibility(float cred)
     {
         slider.value = cred;
     }

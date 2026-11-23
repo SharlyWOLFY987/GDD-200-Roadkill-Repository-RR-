@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     // variable for how fast the rotation will happen
     private float rotationSpeed = 130f;
     private float returnSpeed = 270f;
-    private float transformSpeed = 5f;
+    private float transformSpeed = 6.5f; // - Chuck, adjusted this a little bit so it's faster
     private float laptopRotationSpeed = 150f;
 
 
@@ -61,7 +61,9 @@ public class CameraController : MonoBehaviour
     public bool laptopFunction;
     
     // light toggle
-    public GameObject playerLight;
+    [Header("light shenanigans")]
+    public GameObject playerCameraLight;
+    public GameObject headlightParent;
     
   
     //transforms for looking in laptop and looking out of laptop
@@ -71,12 +73,11 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-
         isTurning = true;
         canUseCamera = false;
         freeLookCamera = Camera.main;
         cameraArt.SetActive(false);
-        playerLight.SetActive(false); 
+        playerCameraLight.SetActive(false); 
     }
 
 
@@ -152,6 +153,7 @@ public class CameraController : MonoBehaviour
                     if (Keyboard.current.tabKey.wasPressedThisFrame && laptopFunction == true)
                     {
                         isNotLookingAtLaptop = true;
+                        headlightParent.SetActive(true); // - Chuck, needs to be here to turn on immediately when leaving the laptop
                     }
                 }
             }
@@ -294,6 +296,7 @@ public class CameraController : MonoBehaviour
                 isTurning = false;
                 isLookingAtLaptop = false;
                 laptopFunction = true;
+                headlightParent.SetActive(false); // - Chuck
             }
             transform.localRotation = Quaternion.Euler(0f, horizontalAngle, 0f);
         }
@@ -307,7 +310,6 @@ public class CameraController : MonoBehaviour
                 isNotLookingAtLaptop = false;
                 laptopFunction = false;
                 isTurning = true;
-
             }
         }
     }
@@ -321,7 +323,7 @@ public class CameraController : MonoBehaviour
             {
                 if (Keyboard.current.shiftKey.wasPressedThisFrame)
                 {
-                    playerLight.SetActive(true); //enables the camera light
+                    playerCameraLight.SetActive(true); //enables the camera light
                     canUseCamera = true;
                     zoomInFunction = true;
                 }
@@ -351,7 +353,7 @@ public class CameraController : MonoBehaviour
 
             if(zoomOutFunction == true)
             {
-                playerLight.SetActive(false); //enables the camera light
+                playerCameraLight.SetActive(false); //enables the camera light
                 cameraArt.SetActive(false);
                 getAxis = false;
                 freeLookCamera.fieldOfView = Mathf.MoveTowards(freeLookCamera.fieldOfView, zoomOutFov, zoomSpeed * Time.deltaTime);

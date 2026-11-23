@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
     public int totalLikes;
     public int totalDislikes;
     public float credibility;
+    public float credibilityMultiplier;
     public NavigationController navigationController; //reference to location transition
 
     [Header("Cryptid-related")]
+    public GameObject DeerMan;
     public bool theEntProven;
     public bool theDeerManProven; 
     public int tunnelEntrancePhotosTaken; // responsible for spawning deer man
@@ -40,7 +42,8 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void DamageCar(){
         if(carDamage == 1)
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        credBarReference.SetCredibility(50+(totalLikes-totalDislikes));
+        credBarReference.SetCredibility(50+((totalLikes-totalDislikes)*credibilityMultiplier));
         credibility = credBarReference.GetComponent<Slider>().value; // sets credibility to the value of the slider for this and other scripts to use
         
         //----------------------------- entity spawning -------------------------------------------
@@ -91,27 +94,29 @@ public class GameManager : MonoBehaviour
             //instantiate the deer man
             Debug.Log("The Deer Man has spawned.");
             deerManSpawned = true;
+            DeerMan.SetActive(true); // spawns the deer man
         }
         if(waterfallPhotosTaken % 3 == 0 && waterfallPhotosTaken > 0){ // same as above
             // spawn nothing, but here just in case
         }
         //--------------------------- end conditions ----------------------------------------------
         //credibility end condition
-        if(credibility < 20 && createdBlogPosts.Count > 3)
+        if(credibility < 20 && createdBlogPosts.Count >= 3)
         {
             //end the game
-            Debug.Log("You've been banned!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
 
         //car damage end condition
         if(carDamage >= 3)
         {
-            //end the game with car damage end screen
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         }
         
+        // win condition!
         if(credibility > 80 && theDeerManProven && theEntProven)
         {
-            //win the game!
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         }
     }
 }

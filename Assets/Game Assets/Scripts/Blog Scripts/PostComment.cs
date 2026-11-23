@@ -4,30 +4,24 @@ using System.Collections.Generic;
 
 public class PostComment : MonoBehaviour
 {
+    private bool commentsGenerated = false;
     //comment text boxes in unity
     //TODO: create commentManager parent (attach this script to it) and put the text boxes inside
-    public TMP_Text comment1;
+    //public TMP_Text comment1; //verified comment
+    public TMP_Text verComment;
     public TMP_Text comment2;
     public TMP_Text comment3;
 
     //TODO: finish username class and figure out pfps?
-    public TMP_Text username1;
+    //public TMP_Text username1; //verified username
+    public TMP_Text verUsername;
     public TMP_Text username2;
     public TMP_Text username3;
 
     public string[] usernames =
     {
-        "PaigeArtist56",
-        "CharlieMcDuck",
-        "OvertheBenjies",
-        "Hershal'sChocolate",
-        "Calilovesharks",
         "Mikeydude()",
         "I'mNotaReference:(",
-        "MattisFantastic^^",
-        "SharkFan23",
-        "AdrainANDNoir:)",
-        "ChrisISBACK!2$",
         "RedisSUSuuu",
         "SpicyNugget&&",
         "CorpseFan^^",
@@ -44,6 +38,20 @@ public class PostComment : MonoBehaviour
         "IlikePork23",
         "OrangeHat7^%"
 
+    };
+
+    public string[] verUsernames =
+    {
+        "PaigeArtist56",
+        "CharlieMcDuck",
+        "OvertheBenjies",
+        "Hershal'sChocolate",
+        "Calilovesharks",
+        "ChuckChuck00",
+        "MattisFantastic^^",
+        "SharkFan23",
+        "AdrainANDNoir:)",
+        "ChrisISBACK!2$",
     };
 
     //list of 'correct' commments
@@ -72,12 +80,108 @@ public class PostComment : MonoBehaviour
 
     };
 
+    public string[] deermanCorrect =
+    {
+        "I've seen similar things from the Deer Man! Keep looking for more deer-like evidence.",
+        "Looks like some good Deer Man evidence! Try finding more like that.",
+        "You're right, that's definetly the Deer Man."
+    };
+
+    public string[] deermanIncorrect = //on hold temp. leaning to looking image (cause of fake evidence)
+    {
+        "That doesn't seem quite right, I've seen similar evidence for the Deer Man instead.",
+        "This looks more like it belongs to the Deer Man"
+    };
+
+    public string[] entCorrect =
+    {
+        "I've seen similar things from the Ent! Keep looking for more tree-like evidence.",
+        "Looks like some good Ent evidence! Try finding more like this.",
+        "You're right, that's definetly the Ent."
+    };
+
+    public string[] entIncorrect = //on hold temp.
+    {
+        "That doesn't seem quite right, I've seen similar evidence for the Ent instead.",
+        "This looks more like it belongs to the Ent"
+    };
+
+    public string[] roadkillCorrect =
+    {
+        "This is definetly a strange picture, try finding some more like this.", //strange
+        "I've never seen anything like this, do we have a new creature?", //new
+        "This doesn't fit any of the known creatures from this area, keeping looking for more like that.", //known
+        "This is new, I wonder if we've missed a creature." //new
+    };
+
+    public string[] roadkillIncorrect = //on hold temp.
+    {
+        "I don't know what that is but it seems like something important",
+    };
+
+    public string[] fakeEvidence =
+    {
+        "This doesn't seem like anything that needs to be posted.",
+        "Just looks like a normal picture, not everything needs to be posted!"
+    };
+
     //sets the comments in unity to the correct typing
     //TODO: get the incorrect and corrects working properly!
 
-    public void ShowComment(bool isCorrect)
+    public void ShowComment(bool isCorrect, string cryptid)
     {
+        if (commentsGenerated)
+        {
+            return;
+        }
+
+        commentsGenerated = true;
+
+        string cryptidName = cryptid.Trim().Replace(" ", "");
+
+        Debug.Log("Actual creature in photo: [" + cryptidName + "]");
+
         string[] comments;
+        string[] verifiedComments;
+
+        if (cryptidName.Equals("DeerMan", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = deermanCorrect;
+            }
+            else
+            {
+                verifiedComments = deermanIncorrect;
+            }
+        }
+        else if (cryptidName.Equals("TheEnt", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = entCorrect;
+            }
+            else
+            {
+                verifiedComments = entIncorrect;
+            }
+        }
+        else if (cryptidName.Equals("Roadkill", System.StringComparison.OrdinalIgnoreCase))
+        {
+            if (isCorrect)
+            {
+                verifiedComments = roadkillCorrect;
+            }
+            else
+            {
+                verifiedComments = roadkillIncorrect;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Unknown cryptid name: " + cryptid);
+            verifiedComments = fakeEvidence;
+        }
 
         if (isCorrect)
         {
@@ -90,14 +194,22 @@ public class PostComment : MonoBehaviour
 
         List<string> availableComments = new List<string>(comments);
         List<string> availableUsernames = new List<string>(usernames);
+        List<string> availableVerUsernames = new List<string>(verUsernames);
 
-        comment1.text = GetRandomComment(availableComments);
+        //comment1.text = GetRandomComment(availableComments);
+        //verComment.text = GetRandomVerComment();
+        verComment.text = GetRandomComment(new List<string>(verifiedComments));
         comment2.text = GetRandomComment(availableComments);
         comment3.text = GetRandomComment(availableComments);
 
-        username1.text = GetRandomUsername(availableUsernames);
+        //username1.text = GetRandomUsername(availableUsernames);
+        verUsername.text = GetRandomVerUsername(availableVerUsernames);
         username2.text = GetRandomUsername(availableUsernames);
         username3.text = GetRandomUsername(availableUsernames);
+
+        //verUsername.text = "Verified";
+        //username2.text = "Normal 1";
+        //username3.text = "Normal 2";
     }
 
     string GetRandomComment(List<string> comments)
@@ -120,6 +232,22 @@ public class PostComment : MonoBehaviour
         usernames.RemoveAt(randomNumber);
 
         return selectedUsername;
+    }
+
+    string GetRandomVerUsername(List<string> verUsernames)
+    {
+        int randomNumber2 = Random.Range(0, verUsernames.Count);
+
+        string selectedVerUsername = verUsernames[randomNumber2];
+
+        verUsernames.RemoveAt(randomNumber2);
+
+        return selectedVerUsername;
+    }
+
+    public void ResetComments()
+    {
+        commentsGenerated = false;
     }
 
 }
