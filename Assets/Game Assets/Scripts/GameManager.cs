@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Cryptid-related")]
     public GameObject DeerMan;
+    public GameObject TheEnt;
     public bool theEntProven;
     public bool theDeerManProven; 
     public int tunnelEntrancePhotosTaken; // responsible for spawning deer man
@@ -86,12 +87,13 @@ public class GameManager : MonoBehaviour
         //----------------------------- entity spawning -------------------------------------------
         if(roadsideWoodsPhotosTaken % 3 == 0 && roadsideWoodsPhotosTaken > 0 && entSpawned == false) // if photos taken is a multiple of 3
         {
-            //instnatiate the ent
-            Debug.Log("The Ent has spawned.");
+            //spawns the Ent
+            //Debug.Log("The Ent has spawned.");
+            TheEnt.GetComponent<EntBehavior>().SpawnEnt();
             entSpawned = true;
         }
         if(tunnelEntrancePhotosTaken % 3 == 0 && tunnelEntrancePhotosTaken > 0 && deerManSpawned == false){ // same as above for deer man
-            //instantiate the deer man
+            //spawns the deer man
             Debug.Log("The Deer Man has spawned.");
             deerManSpawned = true;
             DeerMan.SetActive(true); // spawns the deer man

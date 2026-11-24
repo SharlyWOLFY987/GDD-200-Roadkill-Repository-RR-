@@ -38,6 +38,7 @@ public class CameraRecognizeObjects : MonoBehaviour
 
     [Header("Cryptids")]
     public GameObject deerMan;
+    public GameObject theEnt;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -83,8 +84,9 @@ public class CameraRecognizeObjects : MonoBehaviour
             //toggle 'photo is ready' UI element! (the same as the previous one with a couple of element added on)
             if (Input.GetMouseButtonDown(0) && canTakePhoto) //when left mouse is pressed
             {
-                //set target cryptid angered variable to true, 
+                //sets target cryptid angered variable to true (they are slightly different scripts)
                 deerMan.GetComponent<EntityController>().isTriggered = true;
+                theEnt.GetComponent<EntBehavior>().isTrigger = true;
                 for(int i = 0; i < evidencePhotoArray.evidenceImages.Length; i++)
                 {
                     //Debug.Log(i); //puts the amount of evidence photos total into the log (for testing)
