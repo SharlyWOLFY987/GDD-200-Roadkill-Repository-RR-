@@ -89,7 +89,7 @@ public class BlogPostClass : MonoBehaviour
                 maxEngagement += 20;
                 Debug.Log("You proved Deer Man!");
             }
-            if(String.Equals(cryptidProven, "Real") && entityInPhoto == "TheEnt\n")
+            if(String.Equals(cryptidProven, "Real", StringComparison.Ordinal) && String.Equals(entityInPhoto, "TheEnt\n", StringComparison.Ordinal))
             {
                 gameManager.theEntProven = true;
                 maxEngagement += 20;
