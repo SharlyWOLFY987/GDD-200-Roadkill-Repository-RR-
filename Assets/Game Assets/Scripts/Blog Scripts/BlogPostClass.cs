@@ -67,8 +67,10 @@ public class BlogPostClass : MonoBehaviour
         //gets the name of the entity in the selected image
         String[] parts = evidencePhoto.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
-        String cryptidProven = parts[1].Replace(" ", ""); // this should say "real" or "cryptid" or something
+        String cryptidProven = parts[1].Replace(" ", ""); // this should say "Real" if it's the actual cryptid being captured
+        Debug.Log("Cryptid Proven: " + cryptidProven); //outputs "Real" if the name of the cryptid GameObject works
         entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
+        Debug.Log(entityInPhoto);
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
         //Debug.Log(entityInPhoto);
         //sDebug.Log(postTagForComparison);
@@ -81,6 +83,18 @@ public class BlogPostClass : MonoBehaviour
         }
         else if(String.Equals(entityInPhoto, postTagForComparison, StringComparison.Ordinal))
         {
+            if(String.Equals(cryptidProven, "Real") && entityInPhoto == "DeerMan\n")
+            {
+                gameManager.theDeerManProven = true;
+                maxEngagement += 20;
+                Debug.Log("You proved Deer Man!");
+            }
+            if(String.Equals(cryptidProven, "Real") && entityInPhoto == "TheEnt\n")
+            {
+                gameManager.theEntProven = true;
+                maxEngagement += 20;
+                Debug.Log("You proved The Ent!");
+            }
             //Debug.Log("Post is correctly tagged!");
             postComment.ShowComment(true, entityInPhoto); // - Alana
             StartCoroutine(EvaluatePostAccuracy("correct"));

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public CredibilityBar credBarReference;
     public int totalLikes;
     public int totalDislikes;
+    public float maxCredibility; // set this to 90 in the inspector
     public float credibility;
     public float credibilityMultiplier;
     public NavigationController navigationController; //reference to location transition
@@ -73,6 +74,18 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(5.0f, 20.0f));
             light.intensity = Random.Range(5.0f, 20.0f);
     }
+    public void ChangeMaxCredibility()
+    {
+        credibility = maxCredibility;
+        if (theDeerManProven)
+        {
+            maxCredibility += 5.0f;
+        }
+        if (theEntProven)
+        {
+            maxCredibility += 5.0f;
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -116,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         
         // win condition!
-        if(credibility > 80 && theDeerManProven && theEntProven)
+        if(credibility > 90 && theDeerManProven && theEntProven)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         }

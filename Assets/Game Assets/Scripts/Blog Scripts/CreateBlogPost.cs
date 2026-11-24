@@ -71,7 +71,7 @@ public class CreateBlogPost : MonoBehaviour
         {
              postImageSelection.photoIndex--; // this prevents out of bounds error
         }
-        Debug.Log("Photo was removed successfully!");
+        //Debug.Log("Photo was removed successfully!");
         //will find a better fix later, good enough for now
         yield return new WaitForSeconds(0.01f);
         DelayedSetActive(blogHomeTab); // toggles on the blog home tab
