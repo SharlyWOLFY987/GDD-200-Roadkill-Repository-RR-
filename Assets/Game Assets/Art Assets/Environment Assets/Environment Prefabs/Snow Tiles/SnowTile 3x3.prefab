@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow Tile 2X Scale (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
+      objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -113,6 +121,14 @@ PrefabInstance:
     - target: {fileID: 130395025240924784, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_Name
       value: Snow Tile 2X Scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
       objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -176,6 +192,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow Tile 2X Scale (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
+      objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32
@@ -237,6 +261,14 @@ PrefabInstance:
     - target: {fileID: 130395025240924784, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_Name
       value: Snow Tile 2X Scale (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
       objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,6 +332,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: snow_full (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
+      objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -361,6 +401,14 @@ PrefabInstance:
     - target: {fileID: 130395025240924784, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_Name
       value: snow_full (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
       objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -424,6 +472,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow Tile 2X Scale (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
+      objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32
@@ -486,6 +542,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow Tile 2X Scale (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
+      objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -547,6 +611,14 @@ PrefabInstance:
     - target: {fileID: 130395025240924784, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_Name
       value: snow_full
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924373491994840579, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040378733
       objectReference: {fileID: 0}
     - target: {fileID: 8642351023424023642, guid: a5045466d7962d94186bb680d02b22a6, type: 3}
       propertyPath: m_LocalPosition.x

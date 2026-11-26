@@ -53,6 +53,10 @@ PrefabInstance:
       value: Snow Full Plane (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
       objectReference: {fileID: 0}
@@ -95,8 +99,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1031193449745240869}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &46965495929384214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 50470357366214803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1031193449745240869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46965495929384214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &5663667827116972736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -115,6 +179,10 @@ PrefabInstance:
       value: Snow Full Plane (8)
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
       objectReference: {fileID: 0}
@@ -157,8 +225,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4953789536589076895}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &532366314374331772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 537841560880431353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4953789536589076895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532366314374331772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &5286347902206462634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -177,6 +305,10 @@ PrefabInstance:
       value: Snow Full Plane (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
       objectReference: {fileID: 0}
@@ -219,8 +351,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3641662044754585465}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &534174383373460002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 539394698905952167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3641662044754585465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534174383373460002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &5284549727702554100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -239,6 +431,10 @@ PrefabInstance:
       value: Snow Full Plane (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
       objectReference: {fileID: 0}
@@ -281,8 +477,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 388042655357285180}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &636678796312396751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 630639903363530314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &388042655357285180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636678796312396751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &5109992122568078361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -301,6 +557,10 @@ PrefabInstance:
       value: Snow Full Plane
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -343,8 +603,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5875547792978728424}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &2063198990982394781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 2068384602742918680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5875547792978728424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063198990982394781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &5953281184514212939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -363,6 +683,10 @@ PrefabInstance:
       value: Snow Full Plane (6)
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -405,8 +729,68 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7331818732762024899}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+--- !u!1 &3567922925781931618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 3573143015828909031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7331818732762024899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567922925781931618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &9204363406394253748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
@@ -423,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_Name
       value: Snow Full Plane (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -467,13 +855,73 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5032375515371377035}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
 --- !u!4 &577624894258051665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
   m_PrefabInstance: {fileID: 5056996626488487938}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5060810099747179911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 5056996626488487938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5032375515371377035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060810099747179911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &5642595081579996550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_Name
       value: Snow Full Plane (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,13 +981,73 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57694451146935059}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
 --- !u!4 &28335723864960981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
   m_PrefabInstance: {fileID: 5642595081579996550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5646126417094842371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 5642595081579996550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57694451146935059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646126417094842371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &6107681631071246878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -547,6 +1059,10 @@ PrefabInstance:
     - target: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_Name
       value: Snow Full Plane (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -591,10 +1107,70 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4499991163133509008}
   m_SourcePrefab: {fileID: 100100000, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
 --- !u!4 &1939069505509757005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632364193305692755, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
   m_PrefabInstance: {fileID: 6107681631071246878}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6113438917241612187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074094937324933, guid: eea41dd5e4bb32b4aa3730e448a6eb15, type: 3}
+  m_PrefabInstance: {fileID: 6107681631071246878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4499991163133509008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113438917241612187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000934a6286bfe1fb274f97393563c2539221274975137616313b9087e8bde1ec9d0970dbc063fcda80
+  m_ShapePath:
+  - {x: -5, y: -1.110223e-16, z: 0}
+  - {x: -5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: 1.110223e-16, z: 0}
+  - {x: 5, y: -1.110223e-16, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 5, y: 1.110223e-16, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

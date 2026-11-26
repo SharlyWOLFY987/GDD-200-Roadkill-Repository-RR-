@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3337589786316929960}
   - component: {fileID: 5806660200093322305}
-  - component: {fileID: 9152466273314904806}
   m_Layer: 0
   m_Name: SnowRoadTile (18)
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 1.7999992, y: 0.00000023841858, z: 457.57}
-  m_LocalScale: {x: 1.38922, y: 1.3892198, z: 1.3892198}
+  m_LocalScale: {x: 1.38922, y: 1.3892198, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,56 +91,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &9152466273314904806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107210281041075826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
-  m_ShadowGroup: 0
-  m_Priority: 0
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000934a6286bfe1fb2763c253922127497513761631bde1ec9d4f9739350970dbc063fcda800bb44cc75b6bd968
-  m_ShapePath:
-  - {x: -4.999996, y: -0.10000062, z: 0}
-  - {x: -4.999996, y: 0.10000062, z: 0}
-  - {x: 5, y: 0.10000062, z: 0}
-  - {x: 5, y: -0.10000062, z: 0}
-  m_ShapePathHash: 0
-  m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 5806660200093322305}
-  m_ShadowShape2DProvider:
-    rid: 3962438806789160979
-  m_ShadowCastingSource: 2
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 4.9900055, y: 4.9900055, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0.01
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0.01
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 5806660200093322305}
-  references:
-    version: 2
-    RefIds:
-    - rid: 3962438806789160979
-      type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
-      data: 
