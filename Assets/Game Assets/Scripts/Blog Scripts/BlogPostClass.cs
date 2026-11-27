@@ -68,9 +68,9 @@ public class BlogPostClass : MonoBehaviour
         String[] parts = evidencePhoto.name.Split('_');
         String entityInPhoto = parts[0].Replace(" ", "");
         String cryptidProven = parts[1].Replace(" ", ""); // this should say "Real" if it's the actual cryptid being captured
-        Debug.Log("Cryptid Proven: " + cryptidProven); //outputs "Real" if the name of the cryptid GameObject works
+        //Debug.Log("Cryptid Proven: " + cryptidProven); //outputs "Real" if the name of the cryptid GameObject works
         entityInPhoto = entityInPhoto +"\n"; // adds new line to ensure correct comparison
-        Debug.Log(entityInPhoto);
+        //Debug.Log(entityInPhoto);
         String postTagForComparison = thisCryptidTag.Replace(" ", ""); // for some reason this is getting the tag with a new line, hence the +\n above
         //Debug.Log(entityInPhoto);
         //sDebug.Log(postTagForComparison);
